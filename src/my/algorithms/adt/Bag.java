@@ -3,12 +3,12 @@ package my.algorithms.adt;
 import java.util.Iterator;
 
 public class Bag<Item> implements Iterable<Item> {
-	Bag() {}
-	void add(Item item) {}
-	boolean isEmpty() {
+	public Bag() {}
+	public void add(Item item) {}
+	public boolean isEmpty() {
 		return false;
 	}
-	int size() {
+	public int size() {
 		return 0;
 	}
 	
