@@ -2,17 +2,17 @@ package my.algorithms.adt;
 
 import java.util.Scanner;
 
-public class FixedCapacityStackOfStrings {
+public class FixedCapacityStack<Item> {
 	//用于保存数据的String数组 
-	private String[] data;
+	private Item[] data;
 	//用于保存stack的size
 	private int N;
 	/**
 	 * 构造函数
 	 */
-	public FixedCapacityStackOfStrings(int cap) {
+	public FixedCapacityStack(int cap) {
 		//初始化stack的大小
-		data = new String[cap];
+		data = (Item[])new Object[cap];
 	}
 	/**
 	 * 判断是否为空
@@ -23,14 +23,14 @@ public class FixedCapacityStackOfStrings {
 	/**
 	 * 入栈方法
 	 */
-	public void push(String s) {
+	public void push(Item s) {
 		//保存字符串
 		data[N++] = s;
 	}
 	/**
 	 * 出栈方法
 	 */
-	public String pop() {
+	public Item pop() {
 		//改变stack的大小
 		return data[--N];
 	}
@@ -44,7 +44,7 @@ public class FixedCapacityStackOfStrings {
 	static class Test {
 		public static void main(String[] args) {
 			//构造stack实例
-			FixedCapacityStackOfStrings stack = new FixedCapacityStackOfStrings(5);
+			FixedCapacityStack<String> stack = new FixedCapacityStack<String>(100);
 			//构造获取输入的scanner
 			Scanner scanner = new Scanner(System.in);
 			//读取控制台输入
