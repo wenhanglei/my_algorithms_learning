@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * 联合查找类
@@ -49,7 +49,25 @@ public  class UF {
 	 * 测试动态连接的函数
 	 */
 	public static void main(String[] args) {
-		
+		Scanner scan = new Scanner(System.in);
+		//中的sites数量
+		int num = new Integer(scan.nextLine());
+		//初始化UF对象
+		UF uf = new UF(num);
+		while(scan.hasNext()) {
+			String line = scan.nextLine();
+			String[] ns = line.split(" ");
+			//读取的两个数
+			int numL = new Integer(ns[0]);
+			int numR = new Integer(ns[1]);
+			
+			//两个数是否已经连接
+			if (!uf.connected(numL, numR)) {
+				uf.union(numL, numR);
+				System.out.println(line);
+			}
+		}
+		System.out.println(uf.count() + " components");
 	}
 }
 
