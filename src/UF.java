@@ -24,7 +24,15 @@ public  class UF {
 	 * 关联两个site
 	 */
 	public void union(int p, int q) {
-		id[p] = id[q];
+		if(id[p] == id[q]) return;
+		else {
+			int temp = id[p];
+			for (int i = 0; i < id.length; i++) {
+				if(id[i] == temp)
+					id[i] = id[q];
+			}
+			N--;
+		}
 	}
 	/**
 	 * 查找特定site属于那个component
@@ -49,25 +57,46 @@ public  class UF {
 	 * 测试动态连接的函数
 	 */
 	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
-		//中的sites数量
-		int num = new Integer(scan.nextLine());
-		//初始化UF对象
-		UF uf = new UF(num);
-		while(scan.hasNext()) {
-			String line = scan.nextLine();
-			String[] ns = line.split(" ");
-			//读取的两个数
-			int numL = new Integer(ns[0]);
-			int numR = new Integer(ns[1]);
-			
-			//两个数是否已经连接
-			if (!uf.connected(numL, numR)) {
-				uf.union(numL, numR);
-				System.out.println(line);
-			}
+//		Scanner scan = new Scanner(System.in);
+//		//总的sites数量
+//		int num = new Integer(scan.nextLine());
+//		//初始化UF对象
+//		UF uf = new UF(num);
+//		while(scan.hasNext()) {
+//			String line = scan.nextLine();
+//			String[] ns = line.split(" ");
+//			//读取的两个数
+//			int numL = new Integer(ns[0]);
+//			int numR = new Integer(ns[1]);
+//			
+//			//两个数是否已经连接
+//			if (!uf.connected(numL, numR)) {
+//				uf.union(numL, numR);
+//				System.out.println(line);
+//			}
+//		}
+//		System.out.println(uf.count() + " components");
+		
+		UF uf = new UF(10);
+		int[][] data = {
+				{4, 3},
+				{3, 8},
+				{6, 5},
+				{9, 4},
+				{2, 1},
+				{8, 9},
+				{5, 0},
+				{7, 2},
+				{6, 1},
+				{1, 0},
+				{6, 7}
+		};
+		System.out.println(uf.connected(4, 3));
+		for (int i = 0; i < data.length; i++) {
+			if (!uf.connected(data[i][0], data[i][1])) 
+				uf.union(data[i][0], data[i][1]);
 		}
-		System.out.println(uf.count() + " components");
+		System.out.println(uf.count());
 	}
 }
 
