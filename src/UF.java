@@ -23,7 +23,17 @@ public  class UF {
 	/**
 	 * 关联两个site
 	 */
+	//快速联合的实现方法
 	public void union(int p, int q) {
+		p = find(p);
+		q = find(q);
+		if(p == q) return;
+		id[p] = id[q];
+		N--;
+	}
+	
+	//快速查找的实现方法
+	/*public void union(int p, int q) {
 		if(id[p] == id[q]) return;
 		else {
 			int temp = id[p];
@@ -33,13 +43,21 @@ public  class UF {
 			}
 			N--;
 		}
-	}
+	}*/
 	/**
 	 * 查找特定site属于那个component
 	 */
+	//快速联合的实现方法
 	public int find(int p) {
-		return id[p];
+		do {
+			p = id[p];
+		} while (p != id[p]);
+		return p;
 	}
+	//快速查找的实现方法
+	/*public int find(int p) {
+		return id[p];
+	}*/
 	/**
 	 * 判断两个site是否连接
 	 */
