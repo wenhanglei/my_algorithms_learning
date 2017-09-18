@@ -1,11 +1,5 @@
-import java.util.Scanner;
 
-/**
- * 联合查找类
- * @author Administrator
- *
- */
-public  class UF {
+public class WeightedQuickUnionUF {
 	//保存的所有sites
 	private int[] id;
 	//component的数量
@@ -15,13 +9,13 @@ public  class UF {
 	/**
 	 * 构造函数
 	 */
-	public UF(int i) {
+	public WeightedQuickUnionUF(int i) {
 		//初始化数组
 		id = new int[i];
 		size = new int[i];
 		for (int j = 0; j < i; j++) {
 			id[j] = j;
-			size[i] = 1;
+			size[j] = 1;
 		}
 		//初始化component数量
 		N = i;
@@ -31,53 +25,26 @@ public  class UF {
 	 */
 	//weighted quick union实现
 	public void union(int p, int q) {
-		
-	}
-	/*//快速联合的实现方法
-	public void union(int p, int q) {
-		p = find(p);
-		q = find(q);
-		if(p == q) return;
-		id[p] = id[q];
-		N--;
-	}*/
-	
-	//快速查找的实现方法
-	/*public void union(int p, int q) {
-		if(id[p] == id[q]) return;
-		else {
-			int temp = id[p];
-			for (int i = 0; i < id.length; i++) {
-				if(id[i] == temp)
-					id[i] = id[q];
-			}
-			N--;
+		int i = find(p);
+		int j = find(q);
+		if( i == j) return;
+		if(size[i] < size[j]) {
+			id[j] = id[i];
+			size[i] += size[j];
 		}
-	}*/
+		id[i] = id[j];
+		size[j] += size[i];
+		N--;
+	}
 	/**
 	 * 查找特定site属于那个component
 	 */
 	//weighted quick union实现
 	public int find(int p) {
-		int i = 0;
-		do {
-			p = id[p];
-			i++;
-		} while (p != id[p]);
-		
+		while(p != id[p]) p = id[p];
 		return p;
 	}
-	/*//快速联合的实现方法
-		public int find(int p) {
-			do {
-				p = id[p];
-			} while (p != id[p]);
-			return p;
-		}*/
-	//快速查找的实现方法
-	/*public int find(int p) {
-		return id[p];
-	}*/
+	
 	/**
 	 * 判断两个site是否连接
 	 */
@@ -115,7 +82,7 @@ public  class UF {
 //		}
 //		System.out.println(uf.count() + " components");
 		
-		UF uf = new UF(10);
+		WeightedQuickUnionUF uf = new WeightedQuickUnionUF(10);
 		int[][] data = {
 				{4, 3},
 				{3, 8},
@@ -137,20 +104,3 @@ public  class UF {
 		System.out.println(uf.count());
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
