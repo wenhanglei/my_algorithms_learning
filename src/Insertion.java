@@ -6,6 +6,14 @@ public class Insertion {
 	public void sort(Comparable[] a) {
 		int N = a.length;
 		for (int i = 1; i < N; i++) {
+			for(int j = i; j > 0 && less(a[j], a[j-1]); j--){
+				exch(a, j, j-1);
+			}
+		}
+	}
+	/*public void sort(Comparable[] a) {
+		int N = a.length;
+		for (int i = 1; i < N; i++) {
 			for(int j = 0; j < i; j++) {
 				if(less(a[i], a[j])) {
 					Comparable tmp = a[j];
@@ -14,7 +22,7 @@ public class Insertion {
 				}
 			}
 		}
-	}
+	}*/
 	/**
 	 * 比较大小
 	 */
