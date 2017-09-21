@@ -10,7 +10,7 @@ public class ShellSort {
 			int j = (int)((Math.pow(3, i)-1)/2);
 			for(int k = 0; k < j; k++){
 				for(int l = k+j; l < N; l += j){
-					for(int m = l; m >0 && less(a[m], a[m-j]); m -= j)
+					for(int m = l; m > k && less(a[m], a[m-j]); m -= j)
 						exch(a, m, m-j);
 				}
 			}
