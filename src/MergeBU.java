@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 
-public class MergeSort {
+public class MergeBU {
 	/**
 	 * 辅助数组
 	 */
@@ -10,15 +10,11 @@ public class MergeSort {
 	 * 排序算法
 	 */
 	public void sort(Comparable[] a) {
-		aux = new Comparable[a.length];
-		sort(a, 0, a.length-1);
-	}
-	private void sort(Comparable[] a, int lo, int hi){
-		if(lo == hi){ return;}
-		int N =lo+hi;
-		sort(a, lo, N/2);
-		sort(a, N/2+1, hi);
-		merge(a, lo, N/2, hi);
+		int N = a.length;
+		aux = new Comparable[N];
+		for(int sz = 1; sz < N; sz = sz + sz)
+			for(int i = 0; i < N-sz; i =i+sz+sz)
+				merge(a, i, i+sz-1, Math.min(i+sz+sz-1, N-1));
 	}
 	/**
 	 * 归并方法
