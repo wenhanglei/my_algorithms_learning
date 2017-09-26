@@ -12,25 +12,20 @@ public class QuickSort {
 	}
 	
 	private void sort(Comparable[] a, int lo, int hi) {
+		if(lo >= hi) return;
 		int mid = partition(a, lo, hi);
 		sort(a, lo, mid-1);
 		sort(a, mid+1, hi);
 	}
 	
 	private int partition(Comparable[] a, int lo, int hi) {
-		int mid = lo+1;
-		while(mid < hi){
-			if(less(a[lo], a[mid])){
-				while(less(a[lo], a[hi])) hi--;
-				exch(a, mid, hi);
-				hi--;
-				mid++;
-			}else {
-				while(less(a[mid], a[lo])) mid++;
-				continue;
-			}
+		int i = lo+1;
+		while(hi >= i) {
+			while(!less(a[lo], a[i]) && i < hi) i++;
+			while(less(a[lo], a[hi])) hi--;
+			exch(a, i, hi);
 		}
-		exch(a, lo, hi);
+		exch(a, lo, i);
 		return hi;
 	}
 	
