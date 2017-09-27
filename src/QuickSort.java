@@ -17,7 +17,33 @@ public class QuickSort {
 		sort(a, lo, mid-1);
 		sort(a, mid+1, hi);
 	}
+	/**
+	 * 优化后的分割算法
+	 * @param a
+	 * @param lo
+	 * @param hi
+	 * @return
+	 */
+	private int partition(Comparable[] a, int lo, int hi) {
+		int i = lo, j = hi+1;
+		Comparable v = a[lo];        //分割值
+		while(true) {
+			while(less(a[++i], v)) if(i == hi) break;
+			while(less(v, a[--j])) if(j == lo) break;
+			if(i >= j) break;
+			exch(a, i, j);
+		}
+		exch(a, lo, j);
+		return j;
+	}
 	
+	/**
+	 * 点都不优雅的代码
+	 * @param a
+	 * @param lo
+	 * @param hi
+	 * @return
+	 *//*
 	private int partition(Comparable[] a, int lo, int hi) {
 		int i = lo+1;
 		if(i == hi) {
@@ -43,7 +69,7 @@ public class QuickSort {
 				}
 			}
 		}
-	}
+	}*/
 	
 	/**
 	 * 比较大小
