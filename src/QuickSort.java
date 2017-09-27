@@ -20,13 +20,29 @@ public class QuickSort {
 	
 	private int partition(Comparable[] a, int lo, int hi) {
 		int i = lo+1;
-		while(hi >= i) {
-			while(!less(a[lo], a[i]) && i < hi) i++;
-			while(less(a[lo], a[hi])) hi--;
-			exch(a, i, hi);
+		if(i == hi) {
+			if(less(a[i], a[lo]))
+				exch(a, lo, i); 
+			return hi;
+		} else {
+			while(true) {
+				while(i <= hi && !less(a[lo], a[i])) i++;
+				if(i > hi){
+					exch(a, lo, hi);
+					return hi;
+				}
+				while(less(a[lo], a[hi]) && hi > lo) hi--;
+				if(hi == lo){
+					return hi;
+				}
+				if(i < hi)
+					exch(a, i, hi);
+				else {
+					exch(a, lo, hi);
+					return hi;
+				}
+			}
 		}
-		exch(a, lo, i);
-		return hi;
 	}
 	
 	/**
