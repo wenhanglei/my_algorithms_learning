@@ -106,16 +106,12 @@ public class MaxPQ<Key extends Comparable<Key>> {
 	 * @param i
 	 */
 	private void sink(int i) {
-		while(i <= N) {
-			if(less(i, 2*i)){
-				exch(i, 2*i);
-				i = 2*i;
-			} else if(less(i, 2*i+1)){
-				exch(i, 2*i+1);
-				i = 2*i+1;
-			}else{
-				break;
-			}
+		while(2*i <= N){
+			int j = 2*i;
+			if(j < N && less(j, j+1)) j++;
+			if(less(j, i)) break;
+			exch(i, j);
+			i = j;
 		}
 	}
 	private void resize(int maxSize) {
