@@ -16,10 +16,10 @@ public class HeapSort {
 	public static void sink(Comparable[] a, int i, int N) {
 		while(2*i <= N){
 			int j = 2*i;
-			if(j+1 <= N && less(a[j], a[j-1])) j--;
-			if(!less(a[i-1], a[j])) break;
-			exch(a, i-1, j);
-			i = j+1;
+			if(j < N && less(a[j-1], a[j])) j++;
+			if(!less(a[i-1], a[j-1])) break;
+			exch(a, i-1, j-1);
+			i = j;
 		}
 	}
 	
