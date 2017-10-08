@@ -1,10 +1,18 @@
 
 public class BinarySearchST<Key extends Comparable<Key>, Value> {
+	
+	//保存健的数组
+	private Key[] keys;
+	//保存值的数组
+	private Value[] values;
+	//符号表的大小
+	private int N = 0;
 	/**
 	 * 构造函数
 	 */
-	public BinarySearchST() {
-		
+	public BinarySearchST(int capacity) {
+		keys = (Key[])new Comparable[capacity];
+		values = (Value[])new Object[capacity];
 	}
 	/**
 	 * 添加item
@@ -12,7 +20,15 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 	 * @param val
 	 */
 	public void put(Key key, Value val){
-		
+		int i = rank(key);
+		if(i < N && keys[i].compareTo(key) == 0){
+			values[i] = val; return;
+		}
+		for(int j = N; j > i; j--){
+			keys[j] = keys[j-1]; values[j] = values[j-1];
+		}
+		keys[i] = key; values[i] = val;
+		N++;
 	}
 	/**
 	 * 返回健key的值
@@ -20,7 +36,11 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 	 * @return
 	 */
 	public Value get(Key key) {
-		return null;
+		if(isEmpty()) return null;
+		int i = rank(key);
+		if(i < N && keys[i].compareTo(key) == 0) return values[i];
+		else
+			return null;
 	}
 	/**
 	 * 删除键值对
@@ -42,28 +62,28 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 	 * @return
 	 */
 	boolean isEmpty() {
-		return false;
+		return N <= 0;
 	}
 	/**
 	 * 返回symboltable的大小
 	 * @return
 	 */
 	int size() {
-		return 0;
+		return N;
 	}
 	/**
 	 * 范围最小的健
 	 * @return
 	 */
 	Key min() {
-		return null;
+		return keys[0];
 	}
 	/**
 	 * 返回最大的健
 	 * @return
 	 */
 	Key max() {
-		return null;
+		return keys[N-1];
 	}
 	/**
 	 * 返回最近的小于key的健
@@ -79,7 +99,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 	 * @return
 	 */
 	Key ceiling(Key key) {
-		return null;
+		return keys[rank(key)];
 	}
 	/**
 	 * 返回key的排序
@@ -87,7 +107,20 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 	 * @return
 	 */
 	int rank(Key key) {
-		return 0;
+		int i = 0;
+		int j = N-1;
+		int mid = 0;
+		while(i != j){
+			mid = (i+j)/2;
+			if(keys[mid].compareTo(key) == 0){
+				return mid;
+			} else if(keys[mid].compareTo(key) < 0){
+				j = mid;
+			}else {
+				i = mid;
+			}
+		}
+		return mid;
 	}
 	/**
 	 * 返回第k个健
@@ -95,7 +128,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 	 * @return
 	 */
 	Key select(int k) {
-		return null;
+		return keys[k];
 	}
 	/**
 	 * 删除最小的key
