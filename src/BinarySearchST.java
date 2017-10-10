@@ -72,7 +72,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 		return N;
 	}
 	/**
-	 * 范围最小的健
+	 * 返回最小的健
 	 * @return
 	 */
 	Key min() {
