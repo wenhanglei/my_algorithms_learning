@@ -250,7 +250,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 	 * 返回该符号表的迭代器
 	 * @return
 	 */
-	public Iterable<Key> Keys() {
+	public Iterable<Key> keys() {
 		return keys(min(), max());
 	}
 	/**
@@ -268,13 +268,9 @@ public class BST<Key extends Comparable<Key>, Value> {
 		if(x == null) return;
 		int cl = x.key.compareTo(lo);
 		int ch = x.key.compareTo(hi);
-		if(cl < 0) return;
-		if(ch >= 0) return;
-		//中序遍历
-		traverse(x.left, q, lo, hi);
-		q.add(x.key);
-		traverse(x.right, q, lo, hi);
-		
+		if(cl > 0) traverse(x.left, q, lo, hi);
+		if(cl >= 0 && ch <= 0) q.add(x.key);
+		if(ch < 0) traverse(x.right, q, lo, hi);
 	}
 	void print(Key lo, Key hi){
 		print(root, lo, hi);
@@ -316,14 +312,14 @@ public class BST<Key extends Comparable<Key>, Value> {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String[] data = {"S", "E", "A", "R", "C", "H", "E", "X", "A", "P"};
+		String[] data = {"S", "E", "A", "R", "C", "H", "E", "X", "A", "M", "P", "L", "E"};
 		//构造二分查找树
 		BST<String, Integer> bst = new BST<String, Integer>();
 		for(int i = 0; i < data.length; i++) {
 			bst.put(data[i], i);
 		}
-		for (String i : bst.keys("E", "S")){
-			System.out.println(i);
+		for(String i : bst.keys("F", "T")) {
+			System.out.print(i);
 		}
 	}
 }
