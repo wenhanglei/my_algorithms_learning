@@ -1,3 +1,7 @@
+import java.util.Iterator;
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingQueue;
+
 
 public class BST<Key extends Comparable<Key>, Value> {
 	/**
@@ -186,13 +190,117 @@ public class BST<Key extends Comparable<Key>, Value> {
 	 * 删除最小的key
 	 */
 	void deleteMin() {
-		
+		root = deleteMin(root);
+	}
+	private Node deleteMin(Node x) {
+		if(x == null) return null;
+		if(x.left == null) {
+			return x.right;
+		}else{
+			x.left = deleteMin(x.left);
+			x.N = size(x.left) + size(x.right) + 1;
+			return x;
+		}
 	}
 	/**
 	 * 删除最大的key
 	 */
 	void deleteMax() {
+		root = deleteMax(root);
+	}
+	private Node deleteMax(Node x) {
+		if(x == null) return null;
+		if(x.right == null) return x.left;
+		else {
+			x.right = deleteMax(x.right);
+			x.N = size(x.left) + size(x.right) + 1;
+			return x;
+		}
+	}
+	/**
+	 * 删除键值对
+	 * @param key
+	 */
+	public void delete(Key key) {
+		root = delete(root, key);
+	}
+	public Node delete(Node x, Key key) {
+		if(x == null) return null;
+		int cmp = x.key.compareTo(key);
+		if(cmp == 0){
+			if(x.right == null) return x.left;
+			if(x.left == null) return x.right;
+			Node t = x;
+			x = min(x.left);
+			x.right = deleteMin(t.right);
+			x.left = t.left;
+			return x;
+		}
+		if(cmp > 0){
+			x.left = delete(x.left, key);
+			x.N = size(x.left) + size(x.right) + 1;
+			return x;
+		}else {
+			x.right = delete(x.right, key);
+			x.N = size(x.left) + size(x.right) + 1;
+			return x;
+		}
+	}
+	/**
+	 * 返回该符号表的迭代器
+	 * @return
+	 */
+	public Iterable<Key> Keys() {
+		return keys(min(), max());
+	}
+	/**
+	 * 返回位于lo与hi之间的所有key
+	 * @param lo
+	 * @param hi
+	 * @return
+	 */
+	public Iterable<Key> keys(Key lo, Key hi) {
+		Queue<Key> q = new LinkedBlockingQueue();
+		traverse(root, q, lo, hi);
+		return q;
+	}
+	private void traverse(Node x, Queue q, Key lo, Key hi) {
+		if(x == null) return;
+		int cl = x.key.compareTo(lo);
+		int ch = x.key.compareTo(hi);
+		if(cl < 0) return;
+		if(ch >= 0) return;
+		//中序遍历
+		traverse(x.left, q, lo, hi);
+		q.add(x.key);
+		traverse(x.right, q, lo, hi);
 		
+	}
+	void print(Key lo, Key hi){
+		print(root, lo, hi);
+	}
+	/**
+	 * 中序遍历
+	 * @param x
+	 */
+	private void print(Node x, Key lo, Key hi){
+		if(x == null) return;
+		int cl = x.key.compareTo(lo);
+		int ch = x.key.compareTo(hi);
+		if(cl < 0) return;
+		if(ch > 0) return;
+		//中序遍历
+		print(x.left, lo, hi);
+		System.out.print(x.key);
+		print(x.right, lo, hi);
+		//前序遍历
+//		System.out.println(x.key);
+//		print(x.left);
+//		print(x.right);
+		//后续遍历
+//		print(x.left);
+//		print(x.right);
+//		System.out.println(x.key);
 	}
 	/**
 	 * 获取节点的计数
@@ -214,8 +322,10 @@ public class BST<Key extends Comparable<Key>, Value> {
 		for(int i = 0; i < data.length; i++) {
 			bst.put(data[i], i);
 		}
+		for (String i : bst.keys("E", "S")){
+			System.out.println(i);
+		}
 	}
-	
 }
 
 
