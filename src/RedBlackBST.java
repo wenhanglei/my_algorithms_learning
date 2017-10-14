@@ -23,10 +23,11 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		Node() {
 		}
 		//带参数的构造函数
-		Node(Key key, Value val, int N) {
+		Node(Key key, Value val, int N, boolean color) {
 			this.key = key;
 			this.val = val;
 			this.N = N;
+			this.color = color;
 		}
 	}
 	
@@ -53,7 +54,26 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 	 * @param key
 	 * @param val
 	 */
-	private Node put(Node n, Key key, Value val) {
+	private Node put(Node x, Key key, Value val) {
+		if(x == null) return new Node(key, val, 1, BLACK);
+		int cmp = key.compareTo(x.key);
+		if(cmp < 0){
+			x.left = put(x.left, key, val);
+		}else if(cmp > 0){
+			x.right = put(x.right, key, val);
+		}else{
+			x.val = val;
+		}
+		x.N = size(x.left) + size(x.right) + 1;
+		return x;
+	}
+	/**
+	 * 辅助递归函数
+	 * @param n
+	 * @param key
+	 * @param val
+	 */
+	/*private Node put(Node n, Key key, Value val) {
 		if(n == null) return new Node(key, val, 1);
 		int cmp = key.compareTo(n.key);
 		if(cmp < 0){
@@ -65,7 +85,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		}
 		n.N = size(n.left) + size(n.right) + 1;
 		return n;
-	}
+	}*/
 	/**
 	 * 获取键位key的值
 	 * @param key
@@ -311,6 +331,32 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 	private boolean isRed(Node x) {
 		if(x == null) return BLACK;
 		else return x.color == RED;
+	}
+	private Node rotateLeft(Node h){
+		boolean color = h.color;          //保存连接的颜色
+		Node x = h.right;               //获得右子树的引用
+		h.right = x.left;             //将右子树连接到h的左子树
+		x.left = h;
+		h.color = RED;
+		x.color = color;
+		x.N = h.N;
+		h.N = size(h.left) + size(h.right) + 1;
+		return x;
+	}
+	private Node rotateRight(Node h) {
+		Node x = h.left;
+		h.left = x.right;
+		x.right = h;
+		x.color = h.color;
+		h.color = RED;
+		x.N = h.N;
+		h.N = size(h.left) + size(h.right) + 1;
+		return x;
+	}
+	private void flipColors(Node x) {
+		x.left.color = BLACK;
+		x.right.color = BLACK;
+		x.color = RED;
 	}
 	/**
 	 * 测试函数
