@@ -55,9 +55,35 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 	 * @param val
 	 */
 	private Node put(Node x, Key key, Value val) {
-		if(x == null) return new Node(key, val, 1, BLACK);
+		if(x == null) return new Node(key, val, 1, RED);
 		int cmp = key.compareTo(x.key);
-		
+		if(cmp < 0){
+			x.left = put(x.left, key, val);
+			//如果该节点是3-node
+			if(x.left.color == RED){
+				if(x.right.color == RED && x.left.color == BLACK)
+					rotateLeft(x);
+				if(x.left.color == RED && x.left.left.color == RED)
+					rotateRight(x);
+				if(x.left.color == RED && x.right.color == RED)
+					flipColors(x);
+			}
+		}else if(cmp > 0){
+			x.right = put(x.right, key, val);
+			//如果该节点是3-node
+			if(x.left.color == RED){
+				if(x.right.color == RED && x.left.color == BLACK)
+					rotateLeft(x);
+				if(x.left.color == RED && x.left.left.color == RED)
+					rotateRight(x);
+				if(x.left.color == RED && x.right.color == RED)
+					flipColors(x);
+			}
+		}else{
+			x.val = val;
+		}
+		x.N = size(x.left) + size(x.right) + 1;
+		return x;
 	}
 	/**
 	 * 辅助递归函数
