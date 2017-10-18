@@ -55,7 +55,13 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 	 * @param val
 	 */
 	private Node put(Node x, Key key, Value val) {
-		if(x == null) return new Node(key, val, 1, RED);
+		if(x == null) {
+			Node tmp = new Node(key, val, 1, RED);
+			if(x == root){
+				tmp.color = BLACK;
+			}
+			return tmp;
+		}
 		int cmp = key.compareTo(x.key);
 		if(cmp < 0){
 			x.left = put(x.left, key, val);
@@ -383,12 +389,9 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 	public static void main(String[] args) {
 		String[] data = {"S", "E", "A", "R", "C", "H", "E", "X", "A", "M", "P", "L", "E"};
 		//构造二分查找树
-		BST<String, Integer> bst = new BST<String, Integer>();
+		RedBlackBST<String, Integer> bst = new RedBlackBST<String, Integer>();
 		for(int i = 0; i < data.length; i++) {
 			bst.put(data[i], i);
-		}
-		for(String i : bst.keys("F", "T")) {
-			System.out.print(i);
 		}
 	}
 }
