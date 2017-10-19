@@ -47,6 +47,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 	 */
 	public void put(Key key, Value val) {
 		root = put(root, key, val);
+		root.color = BLACK;
 	}
 	/**
 	 * 辅助递归函数
@@ -55,39 +56,16 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 	 * @param val
 	 */
 	private Node put(Node x, Key key, Value val) {
-		if(x == null) {
-			Node tmp = new Node(key, val, 1, RED);
-			if(x == root){
-				tmp.color = BLACK;
-			}
-			return tmp;
-		}
+		if(x == null) return new Node(key, val, 1, RED);
 		int cmp = key.compareTo(x.key);
-		if(cmp < 0){
-			x.left = put(x.left, key, val);
-			//如果该节点是3-node
-			if(x.left.color == RED){
-				if(x.right.color == RED && x.left.color == BLACK)
-					rotateLeft(x);
-				if(x.left.color == RED && x.left.left.color == RED)
-					rotateRight(x);
-				if(x.left.color == RED && x.right.color == RED)
-					flipColors(x);
-			}
-		}else if(cmp > 0){
-			x.right = put(x.right, key, val);
-			//如果该节点是3-node
-			if(x.left.color == RED){
-				if(x.right.color == RED && x.left.color == BLACK)
-					rotateLeft(x);
-				if(x.left.color == RED && x.left.left.color == RED)
-					rotateRight(x);
-				if(x.left.color == RED && x.right.color == RED)
-					flipColors(x);
-			}
-		}else{
-			x.val = val;
-		}
+		if(cmp == 0) x.val = val;
+		if(cmp < 0) x.left = put(x.left, key, val);
+		if(cmp > 0) x.right = put(x.right, key, val);
+		
+		if(isRed(x.right) && !isRed(x.left)) x = rotateLeft(x);
+		if(isRed(x.left) && isRed(x.left.left)) x = rotateRight(x);
+		if(isRed(x.left) && isRed(x.right)) flipColors(x);
+		
 		x.N = size(x.left) + size(x.right) + 1;
 		return x;
 	}
@@ -234,10 +212,10 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 	/**
 	 * 删除最小的key
 	 */
-	void deleteMin() {
+	/*void deleteMin() {
 		root = deleteMin(root);
-	}
-	private Node deleteMin(Node x) {
+	}*/
+	/*private Node deleteMin(Node x) {
 		if(x == null) return null;
 		if(x.left == null) {
 			return x.right;
@@ -246,11 +224,11 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 			x.N = size(x.left) + size(x.right) + 1;
 			return x;
 		}
-	}
+	}*/
 	/**
 	 * 删除最大的key
 	 */
-	void deleteMax() {
+	/*void deleteMax() {
 		root = deleteMax(root);
 	}
 	private Node deleteMax(Node x) {
@@ -261,12 +239,12 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 			x.N = size(x.left) + size(x.right) + 1;
 			return x;
 		}
-	}
+	}*/
 	/**
 	 * 删除键值对
 	 * @param key
 	 */
-	public void delete(Key key) {
+	/*public void delete(Key key) {
 		root = delete(root, key);
 	}
 	public Node delete(Node x, Key key) {
@@ -290,7 +268,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 			x.N = size(x.left) + size(x.right) + 1;
 			return x;
 		}
-	}
+	}*/
 	/**
 	 * 返回该符号表的迭代器
 	 * @return
