@@ -5,7 +5,7 @@ import java.util.Iterator;
  * @author Administrator
  *
  */
-public class Stack<Item> implements Iterable{
+public class Stack<Item> implements Iterable<Item>{
 	/**
 	 * 节点内部类
 	 */
@@ -55,8 +55,8 @@ public class Stack<Item> implements Iterable{
 		return temp;
 	}
 	@Override
-	public Iterator iterator() {
-		return new Iterator(){
+	public Iterator<Item> iterator() {
+		return new Iterator<Item>(){
 			Node tmp = first;
 			@Override
 			public boolean hasNext() {
@@ -64,7 +64,7 @@ public class Stack<Item> implements Iterable{
 				else return false;
 			}
 			@Override
-			public Object next() {
+			public Item next() {
 				Item item = tmp.item;
 				tmp = tmp.next;
 				return item;

@@ -1,5 +1,7 @@
+import java.util.Iterator;
 
-public class Queue<Item> {
+
+public class Queue<Item> implements Iterable<Item>{
 	/**
 	 * 节点内部类
 	 */
@@ -54,6 +56,26 @@ public class Queue<Item> {
 		first = first.next;
 		N--;
 		return temp;
+	}
+	@Override
+	public Iterator<Item> iterator() {
+		return new Iterator<Item>() {
+			Node tmp = first;
+			@Override
+			public boolean hasNext() {
+				if(tmp.next == null) return false;
+				else return true;
+			}
+			@Override
+			public Item next() {
+				Item item = tmp.item;
+				tmp = tmp.next;
+				return item;
+			}
+			@Override
+			public void remove() {
+			}
+		};
 	}
 
 }
