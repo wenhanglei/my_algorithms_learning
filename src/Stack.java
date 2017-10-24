@@ -1,9 +1,11 @@
+import java.util.Iterator;
+
 /**
  * 用链表实现的栈
  * @author Administrator
  *
  */
-public class Stack<Item> {
+public class Stack<Item> implements Iterable{
 	/**
 	 * 节点内部类
 	 */
@@ -51,6 +53,26 @@ public class Stack<Item> {
 		first = first.next;
 		N--;
 		return temp;
+	}
+	@Override
+	public Iterator iterator() {
+		return new Iterator(){
+			Node tmp = first;
+			@Override
+			public boolean hasNext() {
+				if(tmp.next != null) return true;
+				else return false;
+			}
+			@Override
+			public Object next() {
+				Item item = tmp.item;
+				tmp = tmp.next;
+				return item;
+			}
+			@Override
+			public void remove() {
+			}
+		};
 	}
 
 }
