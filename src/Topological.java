@@ -14,6 +14,13 @@ public class Topological {
 		
 		order = dfo.reversePost();
 	}
+	public Topological(EdgeWeightedDigraph G) {
+		DirectedCycle dc = new DirectedCycle(G);
+		DepthFirstOrder dfo = new DepthFirstOrder(G);
+		if(dc.hasCycle()) isDAG = false;
+		
+		order = dfo.reversePost();
+	}
 	/**
 	 * 该图是否是有向无环图
 	 * @return
