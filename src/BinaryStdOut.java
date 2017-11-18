@@ -1,5 +1,4 @@
 /**
- * 二进制输出流
  * @author Administrator
  *
  */
