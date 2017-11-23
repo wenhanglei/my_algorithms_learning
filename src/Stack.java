@@ -1,42 +1,42 @@
 import java.util.Iterator;
 
 /**
- * ÓÃÁ´±íÊµÏÖµÄÕ»
+ * ç”¨é“¾è¡¨å®ç°çš„æ ˆ
  * @author Administrator
  *
  */
 public class Stack<Item> implements Iterable<Item>{
 	/**
-	 * ½ÚµãÄÚ²¿Àà
+	 * èŠ‚ç‚¹å†…éƒ¨ç±»
 	 */
 	private class Node {
 		Item item;
 		Node next;
 	}
-	//Í·½áµã
+	//å¤´ç»“ç‚¹
 	private Node first;
-	//stackµÄsize
+	//stackçš„size
 	private int N;
 	
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 */
 	Stack() {}
 	/**
-	 * ÊÇ·ñÎª¿Õ
+	 * æ˜¯å¦ä¸ºç©º
 	 */
 	public boolean isEmpty() {
 		return N == 0;
 	}
 	/**
-	 * Õ»´óĞ¡
+	 * æ ˆå¤§å°
 	 */
 	public int size() {
 		return N;
 	}
 	
 	/**
-	 * Êı¾İÈëÕ»
+	 * æ•°æ®å…¥æ ˆ
 	 */
 	public void push(Item item) {
 		Node oldFirst = first;
@@ -46,7 +46,7 @@ public class Stack<Item> implements Iterable<Item>{
 		N++;
 	}
 	/**
-	 * Êı¾İ³öÕ»
+	 * æ•°æ®å‡ºæ ˆ
 	 */
 	public Item pop() {
 		Item temp = first.item;
@@ -76,7 +76,6 @@ public class Stack<Item> implements Iterable<Item>{
 	}
 
 }
-
 
 
 

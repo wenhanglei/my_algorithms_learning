@@ -1,13 +1,13 @@
 
 public class IndexMinPQ<Item extends Comparable<Item>> {
-	//ÓÃÓÚ´æ´¢¶ÓÁĞÊı¾İµÄÊı×é
+	//ç”¨äºå­˜å‚¨é˜Ÿåˆ—æ•°æ®çš„æ•°ç»„
 	private Integer[] heap;
 	private Comparable[] pq;
-	//¶ÓÁĞsize
+	//é˜Ÿåˆ—size
 	private int N = 0;
 	
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 * @param maxN
 	 */
 	IndexMinPQ(int maxN){
@@ -15,7 +15,7 @@ public class IndexMinPQ<Item extends Comparable<Item>> {
 		heap = new Integer[maxN+1];
 	}
 	/**
-	 * ²åÈëitem²¢¹ØÁªÏÂ±êk
+	 * æ’å…¥itemå¹¶å…³è”ä¸‹æ ‡k
 	 * @param k
 	 * @param item
 	 */
@@ -25,7 +25,7 @@ public class IndexMinPQ<Item extends Comparable<Item>> {
 		swim(N);
 	}
 	/**
-	 * ¸Ä±äÏÂ±êkÎªitem
+	 * æ”¹å˜ä¸‹æ ‡kä¸ºitem
 	 * @param k
 	 * @param item
 	 */
@@ -33,7 +33,7 @@ public class IndexMinPQ<Item extends Comparable<Item>> {
 		pq[k] = item;
 	}
 	/**
-	 * ÏÂ±êk´¦ÊÇ·ñ°üº¬item
+	 * ä¸‹æ ‡kå¤„æ˜¯å¦åŒ…å«item
 	 * @param k
 	 * @return
 	 */
@@ -41,7 +41,7 @@ public class IndexMinPQ<Item extends Comparable<Item>> {
 		return pq[k] != null;
 	}
 	/**
-	 * É¾³ıÏÂ±êk´¦µÄitem
+	 * åˆ é™¤ä¸‹æ ‡kå¤„çš„item
 	 * @param k
 	 */
 	void delete(int k) {
@@ -49,21 +49,21 @@ public class IndexMinPQ<Item extends Comparable<Item>> {
 		
 	}
 	/**
-	 * ·µ»Ø×îĞ¡item
+	 * è¿”å›æœ€å°item
 	 * @return
 	 */
 	Item min() {
 		return (Item)pq[minIndex()];
 	}
 	/**
-	 * ·µ»Ø ×îĞ¡itemµÄÏÂ±ê
+	 * è¿”å› æœ€å°itemçš„ä¸‹æ ‡
 	 * @return
 	 */
 	int minIndex() {
 		return heap[1];
 	}
 	/**
-	 * É¾³ı×îĞ¡item
+	 * åˆ é™¤æœ€å°item
 	 * @return
 	 */
 	int delMin() {
@@ -74,14 +74,14 @@ public class IndexMinPQ<Item extends Comparable<Item>> {
 		return tmp;
 	}
 	/**
-	 * ¸Ã¶ÓÁĞÊÇ·ñÎª¿Õ
+	 * è¯¥é˜Ÿåˆ—æ˜¯å¦ä¸ºç©º
 	 * @return
 	 */
 	boolean isEmpty() {
 		return N <= 0;
 	}
 	/**
-	 * ¸Ã¶ÓÁĞµÄsize
+	 * è¯¥é˜Ÿåˆ—çš„size
 	 * @return
 	 */
 	int size() {
@@ -98,7 +98,7 @@ public class IndexMinPQ<Item extends Comparable<Item>> {
 		heap[b] = tmp;
 	}
 	/**
-	 * »Ö¸´¶ÑË³Ğò
+	 * æ¢å¤å †é¡ºåº
 	 * @param i
 	 */
 	private void swim(int i) {
@@ -118,7 +118,7 @@ public class IndexMinPQ<Item extends Comparable<Item>> {
 	}
 
 	/**
-	 * ²âÊÔ·½·¨
+	 * æµ‹è¯•æ–¹æ³•
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -131,7 +131,6 @@ public class IndexMinPQ<Item extends Comparable<Item>> {
 		System.out.println(pq.size());
 	}
 }
-
 
 
 

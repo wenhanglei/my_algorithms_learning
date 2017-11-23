@@ -1,24 +1,24 @@
 /**
- * ×Ö·û´®·ûºÅ±íapi
+ * å­—ç¬¦ä¸²ç¬¦å·è¡¨api
  * @author Administrator
  *
  */
 public class StringST<Value> {
 	
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 */
 	public StringST() {
 	}
 	/**
 	 * @param s
-	 * @return ·µ»Ø½¡Îª sµÄÖµ
+	 * @return è¿”å›å¥ä¸º sçš„å€¼
 	 */
 	public Value get(String key) {
 		return null;
 	}
 	/**
-	 * Ïò·ûºÅ±íÀïÌí¼Ó¼üÖµ¶Ô
+	 * å‘ç¬¦å·è¡¨é‡Œæ·»åŠ é”®å€¼å¯¹
 	 * @param s
 	 * @param v
 	 */
@@ -26,7 +26,7 @@ public class StringST<Value> {
 		
 	}
 	/**
-	 * É¾³ı½¡ÎªkeyµÄ¼üÖµ¶Ô
+	 * åˆ é™¤å¥ä¸ºkeyçš„é”®å€¼å¯¹
 	 * @param key
 	 */
 	public void delete(String key) {
@@ -34,52 +34,51 @@ public class StringST<Value> {
 	}
 	/**
 	 * @param key
-	 * @return ¸Ã·ûºÅ±íÊÇ·ñ°üº¬½¡ÎªkeyµÄ¼üÖµ¶Ô
+	 * @return è¯¥ç¬¦å·è¡¨æ˜¯å¦åŒ…å«å¥ä¸ºkeyçš„é”®å€¼å¯¹
 	 */ 
 	public boolean contains(String key) {
 		return false;
 	}
 	/**
-	 * @return ¸Ã·ûºÅ±íÊÇ·ñÎª¿Õ
+	 * @return è¯¥ç¬¦å·è¡¨æ˜¯å¦ä¸ºç©º
 	 */
 	public boolean isEmptry() {
 		return false;
 	}
 	/**
 	 * @param s
-	 * @return ¸Ã×Ö·û´®ÔÚ·ûºÅ±íÖĞµÄ×î³¤¹«¹²Ç°×º
+	 * @return è¯¥å­—ç¬¦ä¸²åœ¨ç¬¦å·è¡¨ä¸­çš„æœ€é•¿å…¬å…±å‰ç¼€
 	 */
 	public String longestPrefixOf(String s) {
 		return null;
 	}
 	/**
 	 * @param s
-	 * @return ·ûºÅ±íÖĞ°üº¬Ç°×ºsµÄËùÓĞ×Ö·û´®
+	 * @return ç¬¦å·è¡¨ä¸­åŒ…å«å‰ç¼€sçš„æ‰€æœ‰å­—ç¬¦ä¸²
 	 */
 	public Iterable<String> keysWithPrefix(String s) {
 		return null;
 	}
 	/**
 	 * @param s
-	 * @return ·µ»Ø·ûºÅ±íÖĞÓë×Ö·û´®sÏàÆ¥ÅäµÄËùÓĞ×Ö·û´®
+	 * @return è¿”å›ç¬¦å·è¡¨ä¸­ä¸å­—ç¬¦ä¸²sç›¸åŒ¹é…çš„æ‰€æœ‰å­—ç¬¦ä¸²
 	 */
 	public Iterable<String> keysThatMatch(String s) {
 		return null;
 	}
 	/**
-	 * @return ·ûºÅ±íÖĞµÄ¼üÖµ¶Ô¸öÊı
+	 * @return ç¬¦å·è¡¨ä¸­çš„é”®å€¼å¯¹ä¸ªæ•°
 	 */
 	public int size() {
 		return 0;
 	}
 	/**
-	 * @return ·µ»Ø·ûºÅ±íÖĞµÄËùÓĞ×Ö·û´®½¡
+	 * @return è¿”å›ç¬¦å·è¡¨ä¸­çš„æ‰€æœ‰å­—ç¬¦ä¸²å¥
 	 */
 	public Iterable<String> keys() {
 		return null;
 	}
 }
-
 
 
 

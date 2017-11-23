@@ -1,39 +1,39 @@
 import java.util.Scanner;
 
 /**
- * ÁªºÏ²éÕÒÀà
+ * è”åˆæŸ¥æ‰¾ç±»
  * @author Administrator
  *
  */
 public  class UF {
-	//±£´æµÄËùÓĞsites
+	//ä¿å­˜çš„æ‰€æœ‰sites
 	private int[] id;
-	//componentµÄÊıÁ¿
+	//componentçš„æ•°é‡
 	private int N;
-	//¸÷½ÚµãËùÊôÊ÷µÄsize
+	//å„èŠ‚ç‚¹æ‰€å±æ ‘çš„size
 	private int[] size;
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 */
 	public UF(int i) {
-		//³õÊ¼»¯Êı×é
+		//åˆå§‹åŒ–æ•°ç»„
 		id = new int[i];
 		size = new int[i];
 		for (int j = 0; j < i; j++) {
 			id[j] = j;
 			size[i] = 1;
 		}
-		//³õÊ¼»¯componentÊıÁ¿
+		//åˆå§‹åŒ–componentæ•°é‡
 		N = i;
 	}
 	/**
-	 * ¹ØÁªÁ½¸ösite
+	 * å…³è”ä¸¤ä¸ªsite
 	 */
-	//weighted quick unionÊµÏÖ
+	//weighted quick unionå®ç°
 	public void union(int p, int q) {
 		
 	}
-	/*//¿ìËÙÁªºÏµÄÊµÏÖ·½·¨
+	/*//å¿«é€Ÿè”åˆçš„å®ç°æ–¹æ³•
 	public void union(int p, int q) {
 		p = find(p);
 		q = find(q);
@@ -42,7 +42,7 @@ public  class UF {
 		N--;
 	}*/
 	
-	//¿ìËÙ²éÕÒµÄÊµÏÖ·½·¨
+	//å¿«é€ŸæŸ¥æ‰¾çš„å®ç°æ–¹æ³•
 	/*public void union(int p, int q) {
 		if(id[p] == id[q]) return;
 		else {
@@ -55,9 +55,9 @@ public  class UF {
 		}
 	}*/
 	/**
-	 * ²éÕÒÌØ¶¨siteÊôÓÚÄÇ¸öcomponent
+	 * æŸ¥æ‰¾ç‰¹å®šsiteå±äºé‚£ä¸ªcomponent
 	 */
-	//weighted quick unionÊµÏÖ
+	//weighted quick unionå®ç°
 	public int find(int p) {
 		int i = 0;
 		do {
@@ -67,47 +67,47 @@ public  class UF {
 		
 		return p;
 	}
-	/*//¿ìËÙÁªºÏµÄÊµÏÖ·½·¨
+	/*//å¿«é€Ÿè”åˆçš„å®ç°æ–¹æ³•
 		public int find(int p) {
 			do {
 				p = id[p];
 			} while (p != id[p]);
 			return p;
 		}*/
-	//¿ìËÙ²éÕÒµÄÊµÏÖ·½·¨
+	//å¿«é€ŸæŸ¥æ‰¾çš„å®ç°æ–¹æ³•
 	/*public int find(int p) {
 		return id[p];
 	}*/
 	/**
-	 * ÅĞ¶ÏÁ½¸ösiteÊÇ·ñÁ¬½Ó
+	 * åˆ¤æ–­ä¸¤ä¸ªsiteæ˜¯å¦è¿æ¥
 	 */
 	public boolean connected(int p, int q) {
 		return find(p) == find(q);
 	}
 	/**
-	 * ·µ»ØËùÓĞsites×ÜµÄcomponentÊıÁ¿
+	 * è¿”å›æ‰€æœ‰sitesæ€»çš„componentæ•°é‡
 	 */
 	public int count() {
 		return N;
 	}
 	
 	/**
-	 * ²âÊÔ¶¯Ì¬Á¬½ÓµÄº¯Êı
+	 * æµ‹è¯•åŠ¨æ€è¿æ¥çš„å‡½æ•°
 	 */
 	public static void main(String[] args) {
 //		Scanner scan = new Scanner(System.in);
-//		//×ÜµÄsitesÊıÁ¿
+//		//æ€»çš„sitesæ•°é‡
 //		int num = new Integer(scan.nextLine());
-//		//³õÊ¼»¯UF¶ÔÏó
+//		//åˆå§‹åŒ–UFå¯¹è±¡
 //		UF uf = new UF(num);
 //		while(scan.hasNext()) {
 //			String line = scan.nextLine();
 //			String[] ns = line.split(" ");
-//			//¶ÁÈ¡µÄÁ½¸öÊı
+//			//è¯»å–çš„ä¸¤ä¸ªæ•°
 //			int numL = new Integer(ns[0]);
 //			int numR = new Integer(ns[1]);
 //			
-//			//Á½¸öÊıÊÇ·ñÒÑ¾­Á¬½Ó
+//			//ä¸¤ä¸ªæ•°æ˜¯å¦å·²ç»è¿æ¥
 //			if (!uf.connected(numL, numR)) {
 //				uf.union(numL, numR);
 //				System.out.println(line);
@@ -137,7 +137,6 @@ public  class UF {
 		System.out.println(uf.count());
 	}
 }
-
 
 
 

@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 public class QuickSort {
 	/**
-	 * ÅÅĞòËã·¨
+	 * æ’åºç®—æ³•
 	 */
 	public void sort(Comparable[] a) {
 		int lo = 0;
@@ -18,7 +18,7 @@ public class QuickSort {
 		sort(a, mid+1, hi);
 	}
 	/**
-	 * ÓÅ»¯ºóµÄ·Ö¸îËã·¨
+	 * ä¼˜åŒ–åçš„åˆ†å‰²ç®—æ³•
 	 * @param a
 	 * @param lo
 	 * @param hi
@@ -26,7 +26,7 @@ public class QuickSort {
 	 */
 	private int partition(Comparable[] a, int lo, int hi) {
 		int i = lo, j = hi+1;
-		Comparable v = a[lo];        //·Ö¸îÖµ
+		Comparable v = a[lo];        //åˆ†å‰²å€¼
 		while(true) {
 			while(less(a[++i], v)) if(i == hi) break;
 			while(less(v, a[--j])) if(j == lo) break;
@@ -38,7 +38,7 @@ public class QuickSort {
 	}
 	
 	/**
-	 * µã¶¼²»ÓÅÑÅµÄ´úÂë
+	 * ç‚¹éƒ½ä¸ä¼˜é›…çš„ä»£ç 
 	 * @param a
 	 * @param lo
 	 * @param hi
@@ -72,13 +72,13 @@ public class QuickSort {
 	}*/
 	
 	/**
-	 * ±È½Ï´óĞ¡
+	 * æ¯”è¾ƒå¤§å°
 	 */
 	private static boolean less(Comparable a, Comparable b) {
 		return (a.compareTo(b) < 0);
 	}
 	/**
-	 * ½»»»Î»ÖÃ
+	 * äº¤æ¢ä½ç½®
 	 * @param arr
 	 */
 	private void exch(Comparable[] arr, int a, int b) {
@@ -87,7 +87,7 @@ public class QuickSort {
 		arr[b] = tmp;
 	}
 	/**
-	 * ÏÔÊ¾ÅÅĞò½á¹û
+	 * æ˜¾ç¤ºæ’åºç»“æœ
 	 */
 	public void show(Comparable[] a){
 		for(int i = 0; i < a.length; i++) {
@@ -98,7 +98,7 @@ public class QuickSort {
 		}
 	}
 	/**
-	 * ²âÊÔÓÃµÄÖ÷º¯Êı
+	 * æµ‹è¯•ç”¨çš„ä¸»å‡½æ•°
 	 */
 	public static void main(String[] args) {
 //		String[] data = {"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"};

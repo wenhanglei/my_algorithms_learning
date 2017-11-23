@@ -6,7 +6,7 @@ public class DepthFirstDirectedPaths {
 	private final int s;
 	
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 * @param G
 	 * @param s
 	 */
@@ -26,7 +26,7 @@ public class DepthFirstDirectedPaths {
 		}
 	}
 	/**
-	 * Ô´µãsµ½¶¥µãvµÄÂ·¾¶ÊÇ·ñ´æÔÚ
+	 * æºç‚¹såˆ°é¡¶ç‚¹vçš„è·¯å¾„æ˜¯å¦å­˜åœ¨
 	 * @param v
 	 * @return
 	 */
@@ -34,7 +34,7 @@ public class DepthFirstDirectedPaths {
 		return marked[v];
 	}
 	/**
-	 * ´ÓÔ´µãsµ½¶¥µãvµÄÂ·¾¶
+	 * ä»æºç‚¹såˆ°é¡¶ç‚¹vçš„è·¯å¾„
 	 * @return
 	 */
 	public Iterable<Integer> pathTo(int v) {

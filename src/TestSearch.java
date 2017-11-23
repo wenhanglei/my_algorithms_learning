@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 /**
- * Í¼²éÕÒËã·¨µÄ²âÊÔº¯Êı
+ * å›¾æŸ¥æ‰¾ç®—æ³•çš„æµ‹è¯•å‡½æ•°
  * @author Administrator
  *
  */
@@ -12,9 +12,9 @@ public class TestSearch {
 	
 	public static void main(String[] args) throws Exception {
 		/*
-		 * 1¡¢ ¹¹ÔìÍ¼ÊµÀı
-		 * 2¡¢ Í¨¹ıÍ¼ÊµÀı¹¹Ôì²éÕÒ¶ÔÏó
-		 * 3¡¢ µ÷ÓÃ²éÕÒ¶ÔÏó»ñµÃÍ¼µÄÏàÓ¦ÊôĞÔ
+		 * 1ã€ æ„é€ å›¾å®ä¾‹
+		 * 2ã€ é€šè¿‡å›¾å®ä¾‹æ„é€ æŸ¥æ‰¾å¯¹è±¡
+		 * 3ã€ è°ƒç”¨æŸ¥æ‰¾å¯¹è±¡è·å¾—å›¾çš„ç›¸åº”å±æ€§
 		 */
 		In in = new In(args[0]);
 		int s = Integer.parseInt(args[1]);
@@ -31,7 +31,6 @@ public class TestSearch {
 	}
 
 }
-
 
 
 

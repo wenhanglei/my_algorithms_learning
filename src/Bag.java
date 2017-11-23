@@ -2,12 +2,12 @@ import java.util.Iterator;
 
 
 public class Bag<Item> implements Iterable<Item>{
-	//Í·½áµã
+	//å¤´ç»“ç‚¹
 	private Node first;
-	//BagµÄsize
+	//Bagçš„size
 	private int N;
 	/**
-	 * ½ÚµãÄÚ²¿Àà
+	 * èŠ‚ç‚¹å†…éƒ¨ç±»
 	 */
 	private class Node {
 		Item item;
@@ -15,23 +15,23 @@ public class Bag<Item> implements Iterable<Item>{
 	}
 	
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 */
 	Bag() {}
 	/**
-	 * ÊÇ·ñÎª¿Õ
+	 * æ˜¯å¦ä¸ºç©º
 	 */
 	public boolean isEmpty() {
 		return N == 0;
 	}
 	/**
-	 * bag´óĞ¡
+	 * bagå¤§å°
 	 */
 	public int size() {
 		return N;
 	}
 	/**
-	 * Ìí¼ÓÊı¾İ
+	 * æ·»åŠ æ•°æ®
 	 */
 	public void add(Item item) {
 		Node oldFirst = first;
@@ -43,7 +43,7 @@ public class Bag<Item> implements Iterable<Item>{
 	@Override
 	public Iterator<Item> iterator() {
 		return new Iterator<Item>() {
-			//µ±Ç°½Úµã
+			//å½“å‰èŠ‚ç‚¹
 			private Node current = first;
 			@Override
 			public boolean hasNext() {

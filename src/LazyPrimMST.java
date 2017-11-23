@@ -1,15 +1,15 @@
 
 public class LazyPrimMST {
 	
-	//×îĞ¡Éú³ÉÊ÷µÄ¶¥µãÎªtrue
+	//æœ€å°ç”Ÿæˆæ ‘çš„é¡¶ç‚¹ä¸ºtrue
 	private boolean[] marked;
-	//Á¬½Ó¶¥µãµÄ×îĞ¡Éú³ÉÊ÷µÄ±ß
+	//è¿æ¥é¡¶ç‚¹çš„æœ€å°ç”Ÿæˆæ ‘çš„è¾¹
 	private Bag<Edge>[] edgeTo;
-	//·Ö¸î×îĞ¡Éú³ÉÊ÷µÄ·Ö¸î±ß
+	//åˆ†å‰²æœ€å°ç”Ÿæˆæ ‘çš„åˆ†å‰²è¾¹
 	private MinPQ<Edge> pq;
 	
 	/**
-	 * prim×îĞ¡Éú³ÉÊ÷¹¹Ôìº¯Êı
+	 * primæœ€å°ç”Ÿæˆæ ‘æ„é€ å‡½æ•°
 	 * @param G
 	 */
 	public LazyPrimMST(EdgeWeightedGraph G) {
@@ -23,26 +23,26 @@ public class LazyPrimMST {
 		
 	}
 	private void visit(EdgeWeightedGraph G, int v) {
-		//±£´æ¸Ã¶¥µãµ½×îĞ¡Éú³ÉÊ÷
+		//ä¿å­˜è¯¥é¡¶ç‚¹åˆ°æœ€å°ç”Ÿæˆæ ‘
 		marked[v] = true;
-		for(Edge w : G.adj(v)){            //±éÀúÁ¬½ÓvµÄËùÓĞ±ß
-			if(!marked[w.other(v)]) {      //Èç¹ûÃ»ÓĞÌí¼Ó¸Ã¶¥µãµ½×îĞ¡Éú³ÉÊ÷
-				pq.insert(w);              //Ìí¼Ó¸Ã±ßµ½×îĞ¡ÓÅÏÈ¶ÓÁĞ
+		for(Edge w : G.adj(v)){            //éå†è¿æ¥vçš„æ‰€æœ‰è¾¹
+			if(!marked[w.other(v)]) {      //å¦‚æœæ²¡æœ‰æ·»åŠ è¯¥é¡¶ç‚¹åˆ°æœ€å°ç”Ÿæˆæ ‘
+				pq.insert(w);              //æ·»åŠ è¯¥è¾¹åˆ°æœ€å°ä¼˜å…ˆé˜Ÿåˆ—
 			}
 		}
 		if(pq.isEmpty()) return;
-		//»ñÈ¡×îĞ¡Éú³ÉÊ÷µÄ±ß
+		//è·å–æœ€å°ç”Ÿæˆæ ‘çš„è¾¹
 		Edge e = pq.deMin();
 		int x = e.either();
 		int y = e.other(x);
 		while(!(marked[x] && marked[y]))
 			e = pq.deMin();
-		//Ìí¼Ó×îĞ¡Éú³ÉÊ÷µÄ±ß
+		//æ·»åŠ æœ€å°ç”Ÿæˆæ ‘çš„è¾¹
 		edgeTo[v].add(e);
 		visit(G, e.other(v));
 	}
 	/**
-	 * @return ×îĞ¡Éú³ÉÊ÷µÄËùÓĞ±ß
+	 * @return æœ€å°ç”Ÿæˆæ ‘çš„æ‰€æœ‰è¾¹
 	 */
 	public Iterable<Edge> edges() {
 		Bag<Edge> b = new Bag<Edge>();
@@ -55,7 +55,7 @@ public class LazyPrimMST {
 		return b;
 	}
 	/**
-	 * @return ×îĞ¡Éú³ÉÊ÷µÄÈ¨ÖµºÍ
+	 * @return æœ€å°ç”Ÿæˆæ ‘çš„æƒå€¼å’Œ
 	 */
 	public double weight() {
 		double weight = 0;
@@ -68,7 +68,6 @@ public class LazyPrimMST {
 		return weight;
 	}
 }
-
 
 
 

@@ -1,16 +1,16 @@
 
 public class SeparateChainingHashST<Key, Value> {
 	
-	//É¢ÁĞÖµ
+	//æ•£åˆ—å€¼
 	private int M;
-	//¹şÏ£±íµÄ´óĞ¡
+	//å“ˆå¸Œè¡¨çš„å¤§å°
 	private int N;
-	//ÓÃÓÚ±£´æÊı¾İµÄlistÊı×é
+	//ç”¨äºä¿å­˜æ•°æ®çš„listæ•°ç»„
 	private SequentialSearchST<Key, Value>[] st;
 	
 	
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 */
 	public SeparateChainingHashST() {
 		this(997);
@@ -23,7 +23,7 @@ public class SeparateChainingHashST<Key, Value> {
 		}
 	}
 	/**
-	 * Ìí¼Ó¼üÖµ¶Ô
+	 * æ·»åŠ é”®å€¼å¯¹
 	 * @param key
 	 * @param val
 	 */
@@ -32,7 +32,7 @@ public class SeparateChainingHashST<Key, Value> {
 		N++;
 	}
 	/**
-	 * ·µ»Ø¼üÎªkeyµÄÖµ
+	 * è¿”å›é”®ä¸ºkeyçš„å€¼
 	 * @param key
 	 * @return
 	 */
@@ -40,14 +40,14 @@ public class SeparateChainingHashST<Key, Value> {
 		return (Value)st[hash(key)].get(key);
 	}
 	/**
-	 * É¾³ı¼üÎªkeyµÄ¼üÖµ¶Ô
+	 * åˆ é™¤é”®ä¸ºkeyçš„é”®å€¼å¯¹
 	 * @param key
 	 */
 	void delete(Key key) {
 		st[hash(key)].delete(key);
 	}
 	/**
-	 * ÊÇ·ñ´æÔÚ½¡ÎªkeyµÄ¼üÖµ¶Ô
+	 * æ˜¯å¦å­˜åœ¨å¥ä¸ºkeyçš„é”®å€¼å¯¹
 	 * @param key
 	 * @return
 	 */
@@ -55,7 +55,7 @@ public class SeparateChainingHashST<Key, Value> {
 		return st[hash(key)].contains(key);
 	}
 	/**
-	 * ¹şÏ£±íÊÇ·ñÎª¿Õ
+	 * å“ˆå¸Œè¡¨æ˜¯å¦ä¸ºç©º
 	 * @param key
 	 * @return
 	 */
@@ -63,21 +63,21 @@ public class SeparateChainingHashST<Key, Value> {
 		return N == 0;
 	}
 	/**
-	 * ¹şÏ£±íµÄ´óĞ¡
+	 * å“ˆå¸Œè¡¨çš„å¤§å°
 	 * @return
 	 */
 	int size() {
 		return N;
 	}
 	/**
-	 * ·µ»Ø¿ÉÓÃÓÚ±éÀú¸Ã¹şÏ£±íµÄµü´úÆ÷
+	 * è¿”å›å¯ç”¨äºéå†è¯¥å“ˆå¸Œè¡¨çš„è¿­ä»£å™¨
 	 * @return
 	 */
 	Iterable<Key> keys() {
 		return null;
 	}
 	/**
-	 * ¼ÆËã´«Èë½¡µÄ¹şÏ£Öµ
+	 * è®¡ç®—ä¼ å…¥å¥çš„å“ˆå¸Œå€¼
 	 * @param key
 	 * @return
 	 */
@@ -85,14 +85,13 @@ public class SeparateChainingHashST<Key, Value> {
 		return((key.hashCode() & 0x7fffffff) % M);
 	}
 	/**
-	 * ²âÊÔº¯Êı
+	 * æµ‹è¯•å‡½æ•°
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		
 	}
 }
-
 
 
 

@@ -6,7 +6,7 @@ public class Edge implements Comparable<Edge> {
 	private int w;
 	
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 * @param v
 	 * @param w
 	 * @param weight
@@ -17,19 +17,19 @@ public class Edge implements Comparable<Edge> {
 		this.weight = weight;
 	}
 	/**
-	 * @return ¸Ã±ßµÄÈ¨Öµ
+	 * @return è¯¥è¾¹çš„æƒå€¼
 	 */
 	public double weight() {
 		return weight;
 	}
 	/**
-	 * @return ±ßµÄÈÎÒâÒ»¸ö¶¥µã
+	 * @return è¾¹çš„ä»»æ„ä¸€ä¸ªé¡¶ç‚¹
 	 */
 	public int either() {
 		return v;
 	}
 	/**
-	 * @return ¸Ã±ßµÄÁíÒ»¸ö¶¥µã
+	 * @return è¯¥è¾¹çš„å¦ä¸€ä¸ªé¡¶ç‚¹
 	 */
 	public int other(int x) {
 		if(x == v) return w;
@@ -47,7 +47,6 @@ public class Edge implements Comparable<Edge> {
 		return String.format("%d-%d %.2f", v, w, weight);
 	}
 }
-
 
 
 

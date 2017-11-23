@@ -4,7 +4,7 @@ public class DirectedDFS {
 	private boolean[] marked;
 	
 	/**
-	 * ÓĞÏòÍ¼Éî¶ÈÓÅÏÈ±éÀú
+	 * æœ‰å‘å›¾æ·±åº¦ä¼˜å…ˆéå†
 	 * @param G
 	 * @param s
 	 */
@@ -18,7 +18,7 @@ public class DirectedDFS {
 			if(!marked[v]) dfs(G, s);
 	}
 	/**
-	 * Éî¶ÈÓÅÏÈ±éÀú²éÕÒÓë¶¥µã¼¯ºÏµÄ¿É´ïĞÔ
+	 * æ·±åº¦ä¼˜å…ˆéå†æŸ¥æ‰¾ä¸é¡¶ç‚¹é›†åˆçš„å¯è¾¾æ€§
 	 * @param G
 	 * @param sources
 	 */
@@ -30,7 +30,7 @@ public class DirectedDFS {
 		
 	}
 	/**
-	 * Ô´µãÊÇ·ñ¿É´ïµ½¶¥µãv
+	 * æºç‚¹æ˜¯å¦å¯è¾¾åˆ°é¡¶ç‚¹v
 	 * @param v
 	 * @return
 	 */

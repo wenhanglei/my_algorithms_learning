@@ -7,21 +7,21 @@ public class Search {
 	public Search() {
 	}
 	/**
-	 * ´ø²Î¹¹Ôìº¯Êı
+	 * å¸¦å‚æ„é€ å‡½æ•°
 	 * @param g
 	 * @param source
 	 */
 	public Search(Graph G, int s) {
 		/*
-		 * Éî¶ÈÓÅÏÈ±éÀúDFS
-		 * 1¡¢ ±ê¼ÇÒÑ¾­±éÀú¹ıµÄ¶¥µã
-		 * 2¡¢ ·ÃÎÊËùÓĞÃ»ÓĞ±ê¼ÇµÄÁÚ½Ó¶¥µã
+		 * æ·±åº¦ä¼˜å…ˆéå†DFS
+		 * 1ã€ æ ‡è®°å·²ç»éå†è¿‡çš„é¡¶ç‚¹
+		 * 2ã€ è®¿é—®æ‰€æœ‰æ²¡æœ‰æ ‡è®°çš„é‚»æ¥é¡¶ç‚¹
 		 */
 		marked = new boolean[G.V()];
 		dfs(G, s);
 	}
 	/**
-	 * Éî¶ÈÓÅÏÈ±éÀú
+	 * æ·±åº¦ä¼˜å…ˆéå†
 	 * @param v
 	 */
 	private void dfs(Graph G, int v){
@@ -32,7 +32,7 @@ public class Search {
 		}
 	}
 	/**
-	 * ¶¥µãvÊÇ·ñºÍsÏàÁ¬
+	 * é¡¶ç‚¹væ˜¯å¦å’Œsç›¸è¿
 	 * @param v
 	 * @return
 	 */
@@ -40,7 +40,7 @@ public class Search {
 		return marked[v];
 	}
 	/**
-	 * ·µ»ØÓëÔ´µãÏàÁ¬µÄËùÓĞµãµÄÊıÁ¿
+	 * è¿”å›ä¸æºç‚¹ç›¸è¿çš„æ‰€æœ‰ç‚¹çš„æ•°é‡
 	 * @return
 	 */
 	public int count() {
@@ -48,7 +48,6 @@ public class Search {
 	}
 	
 }
-
 
 
 

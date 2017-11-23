@@ -2,60 +2,59 @@
 public class Alphabet {
 	
 	/**
-	 * ×ÖÄ¸¶ÔÏó¹¹Ôìº¯Êı
+	 * å­—æ¯å¯¹è±¡æ„é€ å‡½æ•°
 	 * @param s
 	 */
 	public Alphabet(String s) {
 	}
 	/**
 	 * @param index
-	 * @return ÏÂ±êÎªindexµÄ×ÖÄ¸
+	 * @return ä¸‹æ ‡ä¸ºindexçš„å­—æ¯
 	 */
 	public char toChar(int index) {
 		return 0;
 	}
 	/**
 	 * @param c
-	 * @return ·µ»Ø×Ö·ûcÔÚ¸Ã×ÖÄ¸±íÖĞµÄË÷Òı
+	 * @return è¿”å›å­—ç¬¦cåœ¨è¯¥å­—æ¯è¡¨ä¸­çš„ç´¢å¼•
 	 */
 	public int toIndex(char c) {
 		return 0;
 	}
 	/**
 	 * @param c
-	 * @return ¸Ã×ÖÄ¸±íÖĞÊÇ·ñ°üº¬×Ö·ûc
+	 * @return è¯¥å­—æ¯è¡¨ä¸­æ˜¯å¦åŒ…å«å­—ç¬¦c
 	 */
 	public boolean contains(char c) {
 		return false;
 	}
 	/**
-	 * @return ¸Ã×ÖÄ¸±íµÄ»ùÊı
+	 * @return è¯¥å­—æ¯è¡¨çš„åŸºæ•°
 	 */
 	public int R() {
 		return 0;
 	}
 	/**
-	 * @return ÓÃÓÚ±íÊ¾¸Ã»ùÊıĞèÒªµÄ¶ş½øÖÆÎ»Êı
+	 * @return ç”¨äºè¡¨ç¤ºè¯¥åŸºæ•°éœ€è¦çš„äºŒè¿›åˆ¶ä½æ•°
 	 */
 	public int lgR() {
 		return 0;
 	}
 	/**
 	 * @param s
-	 * @return °Ñ×Ö·û´®s×ª»»³É¶ÔÓ¦ÓÚ¸Ã×ÖÄ¸±íµÄ»ùÊıÎªRµÄÕûÊıÊı×é
+	 * @return æŠŠå­—ç¬¦ä¸²sè½¬æ¢æˆå¯¹åº”äºè¯¥å­—æ¯è¡¨çš„åŸºæ•°ä¸ºRçš„æ•´æ•°æ•°ç»„
 	 */
 	public int[] toIndices(String s) {
 		return null;
 	}
 	/**
 	 * @param indices
-	 * @return °ÑÕûÊıÊı×é×ª»»³ÉÓë¸Ã×ÖÄ¸±í¶ÔÓ¦µÄ×Ö·û´®
+	 * @return æŠŠæ•´æ•°æ•°ç»„è½¬æ¢æˆä¸è¯¥å­—æ¯è¡¨å¯¹åº”çš„å­—ç¬¦ä¸²
 	 */
 	public String toChars(int[] indices) {
 		return null;
 	}
 }
-
 
 
 

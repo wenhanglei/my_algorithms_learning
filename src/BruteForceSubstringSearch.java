@@ -3,9 +3,9 @@ public class BruteForceSubstringSearch {
 	
 	public static int search(String text, String pat) {
 		
-		//ÎÄ±¾×ÜµÄ×Ö·ûÊý
+		//æ–‡æœ¬æ€»çš„å­—ç¬¦æ•°
 		int N = text.length();
-		//Ä£°æ×Ö·û´®µÄ×Ö·ûÊý
+		//æ¨¡ç‰ˆå­—ç¬¦ä¸²çš„å­—ç¬¦æ•°
 		int M = pat.length();
 		
 		for(int i = 0;i < N-M+1;i++) {
@@ -19,8 +19,8 @@ public class BruteForceSubstringSearch {
 	}
 	
 	public static void main(String[] args) {
-		String text = "ÎÒÊÇÄã°Ö°Ö£¬´óÈö±È!";
-		String pat = "°Ö°Ö";
+		String text = "æˆ‘æ˜¯ä½ çˆ¸çˆ¸ï¼Œå¤§æ’’æ¯”!";
+		String pat = "çˆ¸çˆ¸";
 		System.out.println(search(text, pat));
 	}
 }

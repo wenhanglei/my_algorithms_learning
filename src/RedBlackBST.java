@@ -2,27 +2,27 @@ import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 public class RedBlackBST<Key extends Comparable<Key>, Value> {
 	/**
-	 * ¹¹ÔìÊ÷½á¹¹µÄ½ÚµãÀà
+	 * æ„é€ æ ‘ç»“æ„çš„èŠ‚ç‚¹ç±»
 	 * @author Administrator
 	 *
 	 */
 	private class Node{
-		//±£´æµÄ½¡
+		//ä¿å­˜çš„å¥
 		private Key key;
-		//±£´æµÄÖµ
+		//ä¿å­˜çš„å€¼
 		private Value val;
-		//×ó×ÓÊ÷½Úµã
+		//å·¦å­æ ‘èŠ‚ç‚¹
 		private Node left;
-		//ÓÒ×ÓÊ÷½Úµã
+		//å³å­æ ‘èŠ‚ç‚¹
 		private Node right;
-		//¸Ã½ÚµãËùÓĞµÄ×Ó½ÚµãµÄ¸öÊı
+		//è¯¥èŠ‚ç‚¹æ‰€æœ‰çš„å­èŠ‚ç‚¹çš„ä¸ªæ•°
 		private int N;
-		//¸¸½ÚµãÓë¸Ã½ÚµãµÄÁ¬½ÓÑÕÉ«,Èç¹ûÎªºìÉ«ÔòÎªtrue£¬Èç¹ûÎªºÚÉ«ÔòÎªfalse,null½ÚµãÎªºÚÉ«
+		//çˆ¶èŠ‚ç‚¹ä¸è¯¥èŠ‚ç‚¹çš„è¿æ¥é¢œè‰²,å¦‚æœä¸ºçº¢è‰²åˆ™ä¸ºtrueï¼Œå¦‚æœä¸ºé»‘è‰²åˆ™ä¸ºfalse,nullèŠ‚ç‚¹ä¸ºé»‘è‰²
 		private boolean color;
-		//Ä¬ÈÏ¹¹Ôìº¯Êı
+		//é»˜è®¤æ„é€ å‡½æ•°
 		Node() {
 		}
-		//´ø²ÎÊıµÄ¹¹Ôìº¯Êı
+		//å¸¦å‚æ•°çš„æ„é€ å‡½æ•°
 		Node(Key key, Value val, int N, boolean color) {
 			this.key = key;
 			this.val = val;
@@ -31,17 +31,17 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		}
 	}
 	
-	//¸ù½Úµã
+	//æ ¹èŠ‚ç‚¹
 	private Node root;
-	//¸¸½ÚµãÓë×Ó½ÚµãÁ¬½ÓµÄÑÕÉ«
+	//çˆ¶èŠ‚ç‚¹ä¸å­èŠ‚ç‚¹è¿æ¥çš„é¢œè‰²
 	private boolean RED = true, BLACK = false;
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 */
 	public RedBlackBST() {
 	}
 	/**
-	 * Ìí¼Ó¼üÖµ¶Ô
+	 * æ·»åŠ é”®å€¼å¯¹
 	 * @param key
 	 * @param val
 	 */
@@ -50,7 +50,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		root.color = BLACK;
 	}
 	/**
-	 * ¸¨Öúµİ¹éº¯Êı
+	 * è¾…åŠ©é€’å½’å‡½æ•°
 	 * @param n
 	 * @param key
 	 * @param val
@@ -70,7 +70,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		return x;
 	}
 	/**
-	 * ¸¨Öúµİ¹éº¯Êı
+	 * è¾…åŠ©é€’å½’å‡½æ•°
 	 * @param n
 	 * @param key
 	 * @param val
@@ -89,7 +89,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		return n;
 	}*/
 	/**
-	 * »ñÈ¡¼üÎ»keyµÄÖµ
+	 * è·å–é”®ä½keyçš„å€¼
 	 * @param key
 	 * @return
 	 */
@@ -97,7 +97,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		return get(root, key);
 	}
 	/**
-	 * µİ¹é¸¨Öúº¯Êı
+	 * é€’å½’è¾…åŠ©å‡½æ•°
 	 * @param x
 	 * @param key
 	 * @return
@@ -110,7 +110,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		else return get(x.right, key);
 	}
 	/**
-	 * ·µ»Ø×îĞ¡µÄ½¡
+	 * è¿”å›æœ€å°çš„å¥
 	 * @return
 	 */
 	Key min() {
@@ -121,7 +121,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		else return min(x.left);
 	}
 	/**
-	 * ·µ»Ø×î´óµÄ½¡
+	 * è¿”å›æœ€å¤§çš„å¥
 	 * @return
 	 */
 	Key max() {
@@ -132,7 +132,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		else return max(x.right);
 	}
 	/**
-	 * ·µ»Ø×î½üµÄĞ¡ÓÚkeyµÄ½¡
+	 * è¿”å›æœ€è¿‘çš„å°äºkeyçš„å¥
 	 * @param key
 	 * @return
 	 */
@@ -152,7 +152,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		else return x;
 	}
 	/**
-	 * ·µ»Ø×î½üµÄ´óÓÚkeyµÄ½¡
+	 * è¿”å›æœ€è¿‘çš„å¤§äºkeyçš„å¥
 	 * @param key
 	 * @return
 	 */
@@ -172,7 +172,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		else return x;
 	}
 	/**
-	 * ·µ»ØµÚk¸ö½¡
+	 * è¿”å›ç¬¬kä¸ªå¥
 	 * @param k
 	 * @return
 	 */
@@ -192,7 +192,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		}
 	}
 	/**
-	 * ·µ»ØkeyµÄÅÅĞò
+	 * è¿”å›keyçš„æ’åº
 	 * @param key
 	 * @return
 	 */
@@ -210,7 +210,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		}
 	}
 	/**
-	 * É¾³ı×îĞ¡µÄkey
+	 * åˆ é™¤æœ€å°çš„key
 	 */
 	/*void deleteMin() {
 		root = deleteMin(root);
@@ -226,7 +226,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		}
 	}*/
 	/**
-	 * É¾³ı×î´óµÄkey
+	 * åˆ é™¤æœ€å¤§çš„key
 	 */
 	/*void deleteMax() {
 		root = deleteMax(root);
@@ -241,7 +241,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		}
 	}*/
 	/**
-	 * É¾³ı¼üÖµ¶Ô
+	 * åˆ é™¤é”®å€¼å¯¹
 	 * @param key
 	 */
 	/*public void delete(Key key) {
@@ -270,14 +270,14 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		}
 	}*/
 	/**
-	 * ·µ»Ø¸Ã·ûºÅ±íµÄµü´úÆ÷
+	 * è¿”å›è¯¥ç¬¦å·è¡¨çš„è¿­ä»£å™¨
 	 * @return
 	 */
 	public Iterable<Key> keys() {
 		return keys(min(), max());
 	}
 	/**
-	 * ·µ»ØÎ»ÓÚloÓëhiÖ®¼äµÄËùÓĞkey
+	 * è¿”å›ä½äºloä¸hiä¹‹é—´çš„æ‰€æœ‰key
 	 * @param lo
 	 * @param hi
 	 * @return
@@ -299,7 +299,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		print(root, lo, hi);
 	}
 	/**
-	 * ÖĞĞò±éÀú
+	 * ä¸­åºéå†
 	 * @param x
 	 */
 	private void print(Node x, Key lo, Key hi){
@@ -308,21 +308,21 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		int ch = x.key.compareTo(hi);
 		if(cl < 0) return;
 		if(ch > 0) return;
-		//ÖĞĞò±éÀú
+		//ä¸­åºéå†
 		print(x.left, lo, hi);
 		System.out.print(x.key);
 		print(x.right, lo, hi);
-		//Ç°Ğò±éÀú
+		//å‰åºéå†
 //		System.out.println(x.key);
 //		print(x.left);
 //		print(x.right);
-		//ºóĞø±éÀú
+		//åç»­éå†
 //		print(x.left);
 //		print(x.right);
 //		System.out.println(x.key);
 	}
 	/**
-	 * »ñÈ¡½ÚµãµÄ¼ÆÊı
+	 * è·å–èŠ‚ç‚¹çš„è®¡æ•°
 	 * @param n
 	 * @return
 	 */
@@ -335,9 +335,9 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		else return x.color == RED;
 	}
 	private Node rotateLeft(Node h){
-		boolean color = h.color;          //±£´æÁ¬½ÓµÄÑÕÉ«
-		Node x = h.right;               //»ñµÃÓÒ×ÓÊ÷µÄÒıÓÃ
-		h.right = x.left;             //½«ÓÒ×ÓÊ÷Á¬½Óµ½hµÄ×ó×ÓÊ÷
+		boolean color = h.color;          //ä¿å­˜è¿æ¥çš„é¢œè‰²
+		Node x = h.right;               //è·å¾—å³å­æ ‘çš„å¼•ç”¨
+		h.right = x.left;             //å°†å³å­æ ‘è¿æ¥åˆ°hçš„å·¦å­æ ‘
 		x.left = h;
 		h.color = RED;
 		x.color = color;
@@ -361,12 +361,12 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		x.color = RED;
 	}
 	/**
-	 * ²âÊÔº¯Êı
+	 * æµ‹è¯•å‡½æ•°
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		String[] data = {"S", "E", "A", "R", "C", "H", "E", "X", "A", "M", "P", "L", "E"};
-		//¹¹Ôì¶ş·Ö²éÕÒÊ÷
+		//æ„é€ äºŒåˆ†æŸ¥æ‰¾æ ‘
 		RedBlackBST<String, Integer> bst = new RedBlackBST<String, Integer>();
 		for(int i = 0; i < data.length; i++) {
 			bst.put(data[i], i);

@@ -1,14 +1,14 @@
 
 public class BreadthFirstPaths {
 
-	//ÓÃÓÚ±£´æÂ·¾¶¹ØÏµµÄÊı×é
+	//ç”¨äºä¿å­˜è·¯å¾„å…³ç³»çš„æ•°ç»„
 	private int[] edgeTo;
-	//ÓÃÓÚ¼ÇÂ¼¶¥µãÊÇ·ñÓë±éÀú¹ı
+	//ç”¨äºè®°å½•é¡¶ç‚¹æ˜¯å¦ä¸éå†è¿‡
 	private boolean[] marked;
 	private final int s;
 	
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 * @param G
 	 * @param s
 	 */
@@ -47,14 +47,14 @@ public class BreadthFirstPaths {
 //		}
 	}
 	/**
-	 * Á¬½Ós£¬vµÄÂ·¾¶ÊÇ·ñ´æÔÚ
+	 * è¿æ¥sï¼Œvçš„è·¯å¾„æ˜¯å¦å­˜åœ¨
 	 * @param v
 	 */
 	public boolean hasPathTo(int v) {
 		return marked[v];
 	}
 	/**
-	 * ·µ»ØÁ¬½Ós£¬ vµÄÂ·¾¶
+	 * è¿”å›è¿æ¥sï¼Œ vçš„è·¯å¾„
 	 * @param v
 	 * @return
 	 */
@@ -67,18 +67,18 @@ public class BreadthFirstPaths {
 		return stack;
 	}
 	/**
-	 * ²âÊÔº¯Êı
+	 * æµ‹è¯•å‡½æ•°
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		/*
-		 *Í¨¹ı¿ØÖÆÌ¨²ÎÊı¹¹ÔìÍ¼¶ÔÏó 
+		 *é€šè¿‡æ§åˆ¶å°å‚æ•°æ„é€ å›¾å¯¹è±¡ 
 		 */
 		In in = new In(args[0]);
 		int s = Integer.parseInt(args[1]);
 		Graph g = new Graph(in);
 		
-		//¹¹ÔìÂ·¾¶¶ÔÏó
+		//æ„é€ è·¯å¾„å¯¹è±¡
 		BreadthFirstPaths p = new BreadthFirstPaths(g, s);
 		for(int i = 0; i < g.V(); i++) {
 			System.out.println(s + " - " + i + ": ");

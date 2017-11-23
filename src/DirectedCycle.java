@@ -11,7 +11,7 @@ public class DirectedCycle {
 	private Stack<Integer> cycle;
 	
 	/**
-	 * ÓĞÏò»·¹¹Ôìº¯Êı
+	 * æœ‰å‘ç¯æ„é€ å‡½æ•°
 	 * @param G
 	 */
 	public DirectedCycle(Digraph G) {
@@ -72,14 +72,14 @@ public class DirectedCycle {
 		}
 	}
 	/**
-	 * ÓĞÏòÍ¼ÊÇ·ñÓĞ»·
+	 * æœ‰å‘å›¾æ˜¯å¦æœ‰ç¯
 	 * @return
 	 */
 	public boolean hasCycle() {
 		return cycle != null;
 	}
 	/**
-	 * ·µ»Ø»·µÄµü´úÆ÷
+	 * è¿”å›ç¯çš„è¿­ä»£å™¨
 	 * @return
 	 */
 	public Iterable<Integer> cycle() {

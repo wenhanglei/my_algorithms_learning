@@ -2,23 +2,23 @@ import java.util.Iterator;
 
 
 public class ResizingArrayStack<Item> implements Iterable<Item> {
-	//ÓÃÓÚ×°ÔØÊı¾İµÄÊı×é
+	//ç”¨äºè£…è½½æ•°æ®çš„æ•°ç»„
 	private Item[] a;
-	//µ±Ç°stackµÄ´óĞ¡
+	//å½“å‰stackçš„å¤§å°
 	private int N;
 	/**
-	 * ³õÊ¼»¯º¯Êı
+	 * åˆå§‹åŒ–å‡½æ•°
 	 */
 	public ResizingArrayStack(int size) {
 		a = (Item[])new Object[size];
 	}
 	/**
-	 * Ä¬ÈÏº¯Êı
+	 * é»˜è®¤å‡½æ•°
 	 */
 	public ResizingArrayStack() {
 	}
 	/**
-	 * ÈëÕ»·½·¨
+	 * å…¥æ ˆæ–¹æ³•
 	 * @param i
 	 */
 	public void push(Item i) {
@@ -28,7 +28,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
 
 	}
 	/**
-	 * ³öÕ»·½·¨
+	 * å‡ºæ ˆæ–¹æ³•
 	 * @return
 	 */
 	public Item pop() {
@@ -38,21 +38,21 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
 		return temp;
 	}
 	/**
-	 * ·µ»ØstackµÄ´óĞ¡
+	 * è¿”å›stackçš„å¤§å°
 	 * @return
 	 */
 	public int size() {
 		return N;
 	}
 	/**
-	 * ÅĞ¶ÏstackÊÇ·ñÎª¿Õ
+	 * åˆ¤æ–­stackæ˜¯å¦ä¸ºç©º
 	 * @return
 	 */
 	public boolean isEmpty() {
 		return N == 0;
 	}
 	/**
-	 * ¸´ÖÆµ±Ç°Õ»µ½Ö¸¶¨´óĞ¡µÄĞÂÕ»
+	 * å¤åˆ¶å½“å‰æ ˆåˆ°æŒ‡å®šå¤§å°çš„æ–°æ ˆ
 	 */
 	private void resize(int maxSize) {
 		Item[] temp = (Item[])new Object[maxSize];

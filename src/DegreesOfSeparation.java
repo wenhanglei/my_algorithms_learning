@@ -3,11 +3,11 @@ import java.util.Scanner;
 
 public class DegreesOfSeparation {
 	/**
-	 * Ê¹ÓÃ¹ã¶ÈÓÅÏÈ±éÀúÊµÏÖ·ÖÀë¶È²éÑ¯
+	 * ä½¿ç”¨å¹¿åº¦ä¼˜å…ˆéå†å®ç°åˆ†ç¦»åº¦æŸ¥è¯¢
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//¹¹Ôì·ûºÅÍ¼
+		//æ„é€ ç¬¦å·å›¾
 		SymbolGraph SG = new SymbolGraph(args[0], args[1]);
 		int s = SG.index(args[2]);
 		
@@ -15,7 +15,7 @@ public class DegreesOfSeparation {
 		
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("please inter your film performer:");
-		String name = scanner.nextLine();           //»ñµÃĞèÒª²éÑ¯µÄÑİÔ±ĞÕÃû
+		String name = scanner.nextLine();           //è·å¾—éœ€è¦æŸ¥è¯¢çš„æ¼”å‘˜å§“å
 		for(int v : bfp.pathTo(SG.index(name))) {
 			System.out.println(SG.name(v));
 		}

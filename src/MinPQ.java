@@ -50,7 +50,7 @@ public class MinPQ<Key extends Comparable> {
 	}
 	
 	/**
-	 * ±È½Ïa£¬ bÏÂ±ê´¦keyµÄ´óĞ¡
+	 * æ¯”è¾ƒaï¼Œ bä¸‹æ ‡å¤„keyçš„å¤§å°
 	 * @param a
 	 * @param b
 	 * @return
@@ -59,7 +59,7 @@ public class MinPQ<Key extends Comparable> {
 		return pq[a].compareTo(pq[b]) < 0;
 	}
 	/**
-	 * ½»»»a£¬b´¦µÄkey
+	 * äº¤æ¢aï¼Œbå¤„çš„key
 	 * @param a
 	 * @param b
 	 */
@@ -70,7 +70,7 @@ public class MinPQ<Key extends Comparable> {
 		pq[b] = tmp;
 	}
 	/**
-	 * »Ö¸´¶ş²æ¶ÑµÄË³Ğò
+	 * æ¢å¤äºŒå‰å †çš„é¡ºåº
 	 */
 	private void swim(int i) {
 		while(less(i, i/2) && i > 1) {
@@ -79,7 +79,7 @@ public class MinPQ<Key extends Comparable> {
 		}
 	}
 	/**
-	 * ÖÃ¶¥ÏòÏÂµÄ»Ö¸´¶ş²æ¶ÑµÄË³Ğò
+	 * ç½®é¡¶å‘ä¸‹çš„æ¢å¤äºŒå‰å †çš„é¡ºåº
 	 * @param i
 	 */
 	private void sink(int i) {
@@ -99,7 +99,6 @@ public class MinPQ<Key extends Comparable> {
 	}
 
 }
-
 
 
 

@@ -3,39 +3,39 @@ import java.util.Iterator;
 
 public class Queue<Item> implements Iterable<Item>{
 	/**
-	 * ½ÚµãÄÚ²¿Àà
+	 * èŠ‚ç‚¹å†…éƒ¨ç±»
 	 */
 	private class Node {
 		Item item;
 		Node next;
 	}
-	//Í·½áµã
+	//å¤´ç»“ç‚¹
 	private Node first;
-	//Î²½Úµã
+	//å°¾èŠ‚ç‚¹
 	private Node last;
-	//¶ÓÁĞ´óĞ¡
+	//é˜Ÿåˆ—å¤§å°
 	private int N;
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 */
 	public Queue() {
 		first = new Node();
 		last = first;
 	}
 	/**
-	 * ÊÇ·ñÎª¿Õ
+	 * æ˜¯å¦ä¸ºç©º
 	 */
 	public boolean isEmpty() {
 		return N == 0;
 	}
 	/**
-	 * ¶ÓÁĞ´óĞ¡
+	 * é˜Ÿåˆ—å¤§å°
 	 */
 	public int size() {
 		return N;
 	}
 	/**
-	 * Ïò¶ÓÁĞÌí¼ÓÊı¾İ
+	 * å‘é˜Ÿåˆ—æ·»åŠ æ•°æ®
 	 */
 	public void enqueue(Item item) {
 		if(N==0){
@@ -49,7 +49,7 @@ public class Queue<Item> implements Iterable<Item>{
 		N++;
 	}
 	/**
-	 * ´Ó¶ÓÁĞÖĞÒÆ³ıÊı¾İ
+	 * ä»é˜Ÿåˆ—ä¸­ç§»é™¤æ•°æ®
 	 */
 	public Item dequeue() {
 		Item temp = first.item;

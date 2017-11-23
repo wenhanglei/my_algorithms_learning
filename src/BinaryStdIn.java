@@ -1,5 +1,5 @@
 /**
- * ¸ÃÎÄ¼ş²Î¿¼×ÔRobert Sedgewick´óÊ¦µÄ´úÂë
+ * è¯¥æ–‡ä»¶å‚è€ƒè‡ªRobert Sedgewickå¤§å¸ˆçš„ä»£ç 
  */
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -7,18 +7,18 @@ import java.util.NoSuchElementException;
 
 public final class BinaryStdIn {
     private static BufferedInputStream in = new BufferedInputStream(System.in);
-    //ÎÄ¼ş½áÊø·û
+    //æ–‡ä»¶ç»“æŸç¬¦
     private static final int EOF = -1;
 
-    private static int buffer;            //Ò»¸ö×Ö½ÚµÄ»º´æ
-    private static int n;                 //»º´æÖĞÊ£ÓàµÄ¶ş½øÖÆÎ»Êı
+    private static int buffer;            //ä¸€ä¸ªå­—èŠ‚çš„ç¼“å­˜
+    private static int n;                 //ç¼“å­˜ä¸­å‰©ä½™çš„äºŒè¿›åˆ¶ä½æ•°
 
-    //¾²Ì¬³õÊ¼»¯´úÂë¿é
+    //é™æ€åˆå§‹åŒ–ä»£ç å—
     static {
         fillBuffer();
     }
 
-    // ²»ÄÜÍ¨¹ıÍâ²¿ÊµÀı»¯
+    // ä¸èƒ½é€šè¿‡å¤–éƒ¨å®ä¾‹åŒ–
     private BinaryStdIn() { }
 
     private static void fillBuffer() {
@@ -34,7 +34,7 @@ public final class BinaryStdIn {
     }
 
    /**
-     * ¹Ø±ÕÕâ¸öÊäÈëÁ÷²¢ÇÒÊÍ·ÅÓëÖ®Ïà¹ØµÄËùÓĞÏµÍ³×ÊÔ´
+     * å…³é—­è¿™ä¸ªè¾“å…¥æµå¹¶ä¸”é‡Šæ”¾ä¸ä¹‹ç›¸å…³çš„æ‰€æœ‰ç³»ç»Ÿèµ„æº
      */
     public static void close() {
         try {
@@ -46,17 +46,17 @@ public final class BinaryStdIn {
     }
 
    /**
-     * Èç¹û±ê×¼ÊäÈëÎª¿ÕÔò·µ»Øtrue
-     * @return true µ±ÇÒÖ»µ±±ê×¼ÊäÈëÁ÷Îª¿Õ
+     * å¦‚æœæ ‡å‡†è¾“å…¥ä¸ºç©ºåˆ™è¿”å›true
+     * @return true å½“ä¸”åªå½“æ ‡å‡†è¾“å…¥æµä¸ºç©º
      */
     public static boolean isEmpty() {
         return buffer == EOF;
     }
 
    /**
-     * ¶ÁÈ¡±ê×¼ÊäÈëÁ÷ÖĞµÄÏÂÒ»¸ö¶ş½øÖÆÎ»²¢·µ»ØÎªÒ»¸öbooleanÖµ
+     * è¯»å–æ ‡å‡†è¾“å…¥æµä¸­çš„ä¸‹ä¸€ä¸ªäºŒè¿›åˆ¶ä½å¹¶è¿”å›ä¸ºä¸€ä¸ªbooleanå€¼
      *
-     * @return ÒÔ {@code boolean} ÖµµÄ·½Ê½·µ»ØÏÂÒ»¸ö¶ş½øÖÆÎ»
+     * @return ä»¥ {@code boolean} å€¼çš„æ–¹å¼è¿”å›ä¸‹ä¸€ä¸ªäºŒè¿›åˆ¶ä½
      * @throws NoSuchElementException if standard input is empty
      */
     public static boolean readBoolean() {
@@ -68,22 +68,22 @@ public final class BinaryStdIn {
     }
 
    /**
-     * ´Ó±ê×¼ÊäÈëÁ÷¶ÁÈ¡ÏÂÒ»¸ö8Î»¶ş½øÖÆÊı²¢·µ»ØÎª×Ö·û
+     * ä»æ ‡å‡†è¾“å…¥æµè¯»å–ä¸‹ä¸€ä¸ª8ä½äºŒè¿›åˆ¶æ•°å¹¶è¿”å›ä¸ºå­—ç¬¦
      *
-     * @return ÒÔ8-bits±íÊ¾µÄ {@code char} ×Ö·ûÊı¾İ
+     * @return ä»¥8-bitsè¡¨ç¤ºçš„ {@code char} å­—ç¬¦æ•°æ®
      * @throws NoSuchElementException if there are fewer than 8 bits available on standard input
      */
     public static char readChar() {
         if (isEmpty()) throw new NoSuchElementException("Reading from empty input stream");
 
-        // ÌØÊâÇé¿ö
+        // ç‰¹æ®Šæƒ…å†µ
         if (n == 8) {
             int x = buffer;
             fillBuffer();
             return (char) (x & 0xff);
         }
 
-        // ºÏ²¢µ±Ç°»º´æÖĞµÄºónÎ»ºÍÏÂÒ»¸ö»º´æÖĞµÄÇ°8-nÎ»
+        // åˆå¹¶å½“å‰ç¼“å­˜ä¸­çš„ånä½å’Œä¸‹ä¸€ä¸ªç¼“å­˜ä¸­çš„å‰8-nä½
         int x = buffer;
         x <<= (8 - n);
         int oldN = n;
@@ -92,7 +92,7 @@ public final class BinaryStdIn {
         n = oldN;
         x |= (buffer >>> n);
         return (char) (x & 0xff);
-        //ÒÔÉÏ´úÂë¶Ô×îºóÒ»¸ö×Ö·û²»ÊÊÓÃ£¬ÒòÎª×îºóÒ»¸ö×Ö·ûµÄnÎª-1
+        //ä»¥ä¸Šä»£ç å¯¹æœ€åä¸€ä¸ªå­—ç¬¦ä¸é€‚ç”¨ï¼Œå› ä¸ºæœ€åä¸€ä¸ªå­—ç¬¦çš„nä¸º-1
     }
 
     public static char readChar(int r) {

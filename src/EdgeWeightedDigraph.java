@@ -1,16 +1,16 @@
 
 public class EdgeWeightedDigraph {
 	
-	//±£´æËùÓĞ±ßµÄlist
+	//ä¿å­˜æ‰€æœ‰è¾¹çš„list
 	private Bag<DirectedEdge>[] edges;
-	//¼ÓÈ¨ÓĞÏòÍ¼µÄ×ÜµÄ¶¥µãÊı
+	//åŠ æƒæœ‰å‘å›¾çš„æ€»çš„é¡¶ç‚¹æ•°
 	private final int V;
-	//¼ÓÈ¨ÓĞÏòÍ¼µÄ±ßµÄÊıÁ¿
+	//åŠ æƒæœ‰å‘å›¾çš„è¾¹çš„æ•°é‡
 	private int E;
 	
 	/**
-	 * ¼ÓÈ¨ÓĞÏòÍ¼µÄ¹¹Ôìº¯Êı
-	 * @param v ×Ü¶¥µãÊı
+	 * åŠ æƒæœ‰å‘å›¾çš„æ„é€ å‡½æ•°
+	 * @param v æ€»é¡¶ç‚¹æ•°
 	 */
 	public EdgeWeightedDigraph(int v) {
 		this.V = v;
@@ -21,8 +21,8 @@ public class EdgeWeightedDigraph {
 	}
 	
 	/**
-	 * ¼ÓÈ¨ÓĞÏòÍ¼µÄ¹¹Ôìº¯Êı
-	 * @param in ÊäÈëÁ÷
+	 * åŠ æƒæœ‰å‘å›¾çš„æ„é€ å‡½æ•°
+	 * @param in è¾“å…¥æµ
 	 */
 	public EdgeWeightedDigraph(In in) {
 		this.V = in.readInt();
@@ -39,19 +39,19 @@ public class EdgeWeightedDigraph {
 		}
 	}
 	/**
-	 * @return ¼ÓÈ¨ÓĞÏòÍ¼µÄ¶¥µãÊı 
+	 * @return åŠ æƒæœ‰å‘å›¾çš„é¡¶ç‚¹æ•° 
 	 */
 	public int V(){
 		return V;
 	}
 	/**
-	 * @return ¼ÓÈ¨ÓĞÏòÍ¼µÄ±ßµÄ¸öÊı
+	 * @return åŠ æƒæœ‰å‘å›¾çš„è¾¹çš„ä¸ªæ•°
 	 */
 	public int E(){
 		return E;
 	}
 	/**
-	 * Ìí¼Ó¼ÓÈ¨ÓĞÏò±ß
+	 * æ·»åŠ åŠ æƒæœ‰å‘è¾¹
 	 * @param e
 	 */
 	public void addEdge(DirectedEdge e){
@@ -60,13 +60,13 @@ public class EdgeWeightedDigraph {
 	}
 	/**
 	 * @param v
-	 * @return ËùÓĞÓë¶¥µãvÏàÁ¬½ÓµÄ¼ÓÈ¨ÓĞÏò±ß
+	 * @return æ‰€æœ‰ä¸é¡¶ç‚¹vç›¸è¿æ¥çš„åŠ æƒæœ‰å‘è¾¹
 	 */
 	public Iterable<DirectedEdge> adj(int v) {
 		return edges[v];
 	}
 	/**
-	 * @return ·µ»Ø¼ÓÈ¨ÓĞÏòÍ¼µÄËùÓĞ±ß
+	 * @return è¿”å›åŠ æƒæœ‰å‘å›¾çš„æ‰€æœ‰è¾¹
 	 */
 	public Iterable<DirectedEdge> edges(){
 		Bag<DirectedEdge> q = new Bag<DirectedEdge>();
@@ -83,7 +83,6 @@ public class EdgeWeightedDigraph {
 		return super.toString();
 	}
 }
-
 
 
 

@@ -1,19 +1,19 @@
 
 public class MaxPQ<Key extends Comparable<Key>> {
-	//±£´æËùÓĞkeyµÄÊı×é
+	//ä¿å­˜æ‰€æœ‰keyçš„æ•°ç»„
 	private Key[] pq;
-	//ÓÅÏÈ¶ÓÁĞµÄ´óĞ¡
+	//ä¼˜å…ˆé˜Ÿåˆ—çš„å¤§å°
 	private int N = 0;
 	
 	/**
-	 * Ä¬ÈÏ¹¹Ôìº¯Êı
+	 * é»˜è®¤æ„é€ å‡½æ•°
 	 */
 	MaxPQ() {
 		pq = (Key[])new Object[9];
 		N = 8;
 	}
 	/**
-	 * sizeÎªmaxµÄ¹¹Ôìº¯Êı
+	 * sizeä¸ºmaxçš„æ„é€ å‡½æ•°
 	 * @param max
 	 */
 	MaxPQ(int max) {
@@ -21,7 +21,7 @@ public class MaxPQ<Key extends Comparable<Key>> {
 		pq = (Key[])new Object[N+1];
 	}
 	/**
-	 * ²ÎÊıÎªaµÄ¹¹Ôìº¯Êı
+	 * å‚æ•°ä¸ºaçš„æ„é€ å‡½æ•°
 	 * @param a
 	 */
 	MaxPQ(Key[] a) {
@@ -31,7 +31,7 @@ public class MaxPQ<Key extends Comparable<Key>> {
 			pq[i+1] = a[i];
 	}
 	/**
-	 * ²åÈëÊı¾İv
+	 * æ’å…¥æ•°æ®v
 	 * @param v
 	 */
 	void insert(Key v) {
@@ -40,14 +40,14 @@ public class MaxPQ<Key extends Comparable<Key>> {
 		swim(N);
 	}
 	/**
-	 * ·µ»Ø×î´óÖµ
+	 * è¿”å›æœ€å¤§å€¼
 	 * @return
 	 */
 	Key max() {
 		return pq[1];
 	}
 	/**
-	 * ÒÆ³ı²¢·µ»Ø×î´óÖµ
+	 * ç§»é™¤å¹¶è¿”å›æœ€å¤§å€¼
 	 * @return
 	 */
 	Key delMax() {
@@ -59,21 +59,21 @@ public class MaxPQ<Key extends Comparable<Key>> {
 		return tmp;
 	}
 	/**
-	 * ÓÅÏÈ¶ÓÁĞÊÇ·ñÎª¿Õ
+	 * ä¼˜å…ˆé˜Ÿåˆ—æ˜¯å¦ä¸ºç©º
 	 * @return
 	 */
 	boolean isEmpty() { 
 		return N > 0;
 	}
 	/**
-	 * ·µ»ØÓÅÏÈ¶ÓÁĞsize
+	 * è¿”å›ä¼˜å…ˆé˜Ÿåˆ—size
 	 * @return
 	 */
 	int size() {
 		return N;
 	}
 	/**
-	 * ±È½Ïa£¬ bÏÂ±ê´¦keyµÄ´óĞ¡
+	 * æ¯”è¾ƒaï¼Œ bä¸‹æ ‡å¤„keyçš„å¤§å°
 	 * @param a
 	 * @param b
 	 * @return
@@ -82,7 +82,7 @@ public class MaxPQ<Key extends Comparable<Key>> {
 		return pq[a].compareTo(pq[b]) < 0;
 	}
 	/**
-	 * ½»»»a£¬b´¦µÄkey
+	 * äº¤æ¢aï¼Œbå¤„çš„key
 	 * @param a
 	 * @param b
 	 */
@@ -93,7 +93,7 @@ public class MaxPQ<Key extends Comparable<Key>> {
 		pq[b] = tmp;
 	}
 	/**
-	 * »Ö¸´¶ş²æ¶ÑµÄË³Ğò
+	 * æ¢å¤äºŒå‰å †çš„é¡ºåº
 	 */
 	private void swim(int i) {
 		while(less(i/2, i) && i > 1) {
@@ -102,7 +102,7 @@ public class MaxPQ<Key extends Comparable<Key>> {
 		}
 	}
 	/**
-	 * ÖÃ¶¥ÏòÏÂµÄ»Ö¸´¶ş²æ¶ÑµÄË³Ğò
+	 * ç½®é¡¶å‘ä¸‹çš„æ¢å¤äºŒå‰å †çš„é¡ºåº
 	 * @param i
 	 */
 	private void sink(int i) {
@@ -121,14 +121,13 @@ public class MaxPQ<Key extends Comparable<Key>> {
 		pq = temp;
 	}
 	/**
-	 * ¶ÓÁĞ²âÊÔ·½·¨
+	 * é˜Ÿåˆ—æµ‹è¯•æ–¹æ³•
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		
 	}
 }
-
 
 
 

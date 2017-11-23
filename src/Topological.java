@@ -4,7 +4,7 @@ public class Topological {
 	private boolean isDAG = true;
 	private Iterable<Integer> order;
 	/**
-	 * ÓĞÏòÎŞ»·Í¼µÄÍØÆËÅÅĞò¹¹Ôìº¯Êı
+	 * æœ‰å‘æ— ç¯å›¾çš„æ‹“æ‰‘æ’åºæ„é€ å‡½æ•°
 	 * @param G
 	 */
 	public Topological(Digraph G) {
@@ -22,14 +22,14 @@ public class Topological {
 		order = dfo.reversePost();
 	}
 	/**
-	 * ¸ÃÍ¼ÊÇ·ñÊÇÓĞÏòÎŞ»·Í¼
+	 * è¯¥å›¾æ˜¯å¦æ˜¯æœ‰å‘æ— ç¯å›¾
 	 * @return
 	 */
 	public boolean isDAG() {
 		return isDAG;
 	}
 	/**
-	 * ·µ»Ø¸ÃÍ¼µÄÍØÆËÅÅĞò
+	 * è¿”å›è¯¥å›¾çš„æ‹“æ‰‘æ’åº
 	 * @return
 	 */
 	public Iterable<Integer> order() {

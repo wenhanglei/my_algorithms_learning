@@ -6,7 +6,7 @@ public class BreadthFirstDirectedPaths {
 	private final int s;
 	
 	/**
-	 * ¹ã¶ÈÓÅÏÈ±éÀú²éÕÒÓĞÏòÍ¼µÄ×î¶ÌÂ·¾¶¹¹Ôìº¯Êı
+	 * å¹¿åº¦ä¼˜å…ˆéå†æŸ¥æ‰¾æœ‰å‘å›¾çš„æœ€çŸ­è·¯å¾„æ„é€ å‡½æ•°
 	 * @param G
 	 * @param s
 	 */
@@ -33,7 +33,7 @@ public class BreadthFirstDirectedPaths {
 		}
 	}
 	/**
-	 * ×î¶ÌÂ·¾¶ÊÇ·ñ´æÔÚ
+	 * æœ€çŸ­è·¯å¾„æ˜¯å¦å­˜åœ¨
 	 * @param v
 	 * @return
 	 */
@@ -41,7 +41,7 @@ public class BreadthFirstDirectedPaths {
 		return marked[v];
 	}
 	/**
-	 * ·µ»Ø×î¶ÌÂ·¾¶µÄµü´úÆ÷
+	 * è¿”å›æœ€çŸ­è·¯å¾„çš„è¿­ä»£å™¨
 	 * @param v
 	 * @return
 	 */

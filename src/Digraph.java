@@ -1,15 +1,15 @@
 
 public class Digraph {
 	
-	//Ê¹ÓÃÁÚ½ÓÁ´±íÊı×é×÷ÎªÍ¼µÄµ×²ãÊı¾İ½á¹¹
+	//ä½¿ç”¨é‚»æ¥é“¾è¡¨æ•°ç»„ä½œä¸ºå›¾çš„åº•å±‚æ•°æ®ç»“æ„
 	private Bag<Integer>[] adj;
-	//Í¼µÄ¶¥µãÊıÁ¿
+	//å›¾çš„é¡¶ç‚¹æ•°é‡
 	private final int V;
-	//Í¼µÄ±ßÊı
+	//å›¾çš„è¾¹æ•°
 	private int E;
 	
 	/**
-	 * ÓĞÏòÍ¼µÄ¹¹Ôìº¯Êı
+	 * æœ‰å‘å›¾çš„æ„é€ å‡½æ•°
 	 * @param V
 	 */
 	public Digraph(int V) {
@@ -21,7 +21,7 @@ public class Digraph {
 		}
 	}
 	/**
-	 * ÊäÈëÁ÷¹¹Ôìº¯Êı
+	 * è¾“å…¥æµæ„é€ å‡½æ•°
 	 * @param in
 	 */
 	public Digraph(In in) {
@@ -34,28 +34,28 @@ public class Digraph {
 		}
 	}
 	/**
-	 * Í¼µÄ¶¥µãÊı
+	 * å›¾çš„é¡¶ç‚¹æ•°
 	 * @return
 	 */
 	public int V(){
 		return V;
 	}
 	/**
-	 * Í¼µÄ±ßÊı
+	 * å›¾çš„è¾¹æ•°
 	 * @return
 	 */
 	public int E(){
 		return E;
 	}
 	/**
-	 * Ìí¼Ó±ß
+	 * æ·»åŠ è¾¹
 	 */
 	public void addEdge(int v, int w){
 		adj[v].add(w);
 		E++;
 	}
 	/**
-	 * Óë¶¥µãvÁÚ½ÓµÄËùÓĞ¶¥µã
+	 * ä¸é¡¶ç‚¹vé‚»æ¥çš„æ‰€æœ‰é¡¶ç‚¹
 	 * @param v
 	 * @return
 	 */
@@ -63,7 +63,7 @@ public class Digraph {
 		return adj[v];
 	}
 	/**
-	 * ¶Ô¸ÃÓĞÏòÍ¼½øĞĞ·´Ïò²Ù×÷
+	 * å¯¹è¯¥æœ‰å‘å›¾è¿›è¡Œåå‘æ“ä½œ
 	 * @return
 	 */
 	public Digraph reverse() {

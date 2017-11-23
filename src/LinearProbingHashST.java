@@ -1,21 +1,21 @@
 
 public class LinearProbingHashST<Key, Value> {
 	
-	//¹şÏ£±í±£´æÊı¾İµÄÈİÆ÷
+	//å“ˆå¸Œè¡¨ä¿å­˜æ•°æ®çš„å®¹å™¨
 	private Key[] keys;
 	private Value[] vals;
-	//¹şÏ£±íµÄÈİÁ¿
+	//å“ˆå¸Œè¡¨çš„å®¹é‡
 	private int M;
-	//¹şÏ£±íµÄ´óĞ¡
+	//å“ˆå¸Œè¡¨çš„å¤§å°
 	private int N;
 	
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 */
 	public LinearProbingHashST() {
 	}
 	/**
-	 * ´ø²ÎÊıµÄ¹¹Ôìº¯Êı
+	 * å¸¦å‚æ•°çš„æ„é€ å‡½æ•°
 	 * @param M
 	 */
 	public LinearProbingHashST(int M) {
@@ -25,7 +25,7 @@ public class LinearProbingHashST<Key, Value> {
 	}
 	
 	/**
-	 * Ìí¼Ó¼üÎªkeyµÄ¼üÖµ¶Ô
+	 * æ·»åŠ é”®ä¸ºkeyçš„é”®å€¼å¯¹
 	 * @param key
 	 */
 	void put(Key key, Value val){
@@ -43,7 +43,7 @@ public class LinearProbingHashST<Key, Value> {
 		}
 	}
 	/**
-	 * ·µ»Ø¼üÎªkeyµÄÖµ
+	 * è¿”å›é”®ä¸ºkeyçš„å€¼
 	 * @param key
 	 * @return
 	 */
@@ -58,11 +58,11 @@ public class LinearProbingHashST<Key, Value> {
 		}
 	}
 	/**
-	 * É¾³ı¼üÎªkeyµÄ¼üÖµ¶Ô
+	 * åˆ é™¤é”®ä¸ºkeyçš„é”®å€¼å¯¹
 	 * @param key
 	 */
 	void delete(Key key) {
-		//Õâ¸ö·½·¨ÊÇ²»ÕıÈ·µÄ
+		//è¿™ä¸ªæ–¹æ³•æ˜¯ä¸æ­£ç¡®çš„
 		/*int index = hash(key);
 		if(keys[index].equals(key)){
 			vals[index] = null;
@@ -74,7 +74,7 @@ public class LinearProbingHashST<Key, Value> {
 		}*/
 	}
 	/**
-	 * ÊÇ·ñ´æÔÚ½¡ÎªkeyµÄ¼üÖµ¶Ô
+	 * æ˜¯å¦å­˜åœ¨å¥ä¸ºkeyçš„é”®å€¼å¯¹
 	 * @param key
 	 * @return
 	 */
@@ -84,7 +84,7 @@ public class LinearProbingHashST<Key, Value> {
 	}
 	
 	/**
-	 * ¹şÏ£±íÊÇ·ñÎª¿Õ
+	 * å“ˆå¸Œè¡¨æ˜¯å¦ä¸ºç©º
 	 * @param key
 	 * @return
 	 */
@@ -92,21 +92,21 @@ public class LinearProbingHashST<Key, Value> {
 		return N == 0;
 	}
 	/**
-	 * ¹şÏ£±íµÄ´óĞ¡
+	 * å“ˆå¸Œè¡¨çš„å¤§å°
 	 * @return
 	 */
 	int size() {
 		return N;
 	}
 	/**
-	 * ·µ»Ø¿ÉÓÃÓÚ±éÀú¸Ã¹şÏ£±íµÄµü´úÆ÷
+	 * è¿”å›å¯ç”¨äºéå†è¯¥å“ˆå¸Œè¡¨çš„è¿­ä»£å™¨
 	 * @return
 	 */
 	Iterable<Key> keys() {
 		return null;
 	}
 	/**
-	 * ¼ÆËã´«Èë½¡µÄ¹şÏ£Öµ
+	 * è®¡ç®—ä¼ å…¥å¥çš„å“ˆå¸Œå€¼
 	 * @param key
 	 * @return
 	 */
@@ -114,7 +114,7 @@ public class LinearProbingHashST<Key, Value> {
 		return((key.hashCode() & 0x7fffffff) % M);
 	}
 	/**
-	 * ²âÊÔº¯Êı
+	 * æµ‹è¯•å‡½æ•°
 	 * @param args
 	 */
 	public static void main(String[] args) {

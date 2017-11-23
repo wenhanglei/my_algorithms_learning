@@ -6,7 +6,7 @@ public class DirectedEdge {
 	private double weight;
 	
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 * @param v
 	 * @param w
 	 * @param weight
@@ -17,20 +17,20 @@ public class DirectedEdge {
 		this.weight = weight;
 	}
 	/**
-	 * @return ¸Ã¼ÓÈ¨ÓĞÏò±ßµÄÈ¨Öµ
+	 * @return è¯¥åŠ æƒæœ‰å‘è¾¹çš„æƒå€¼
 	 */
 	public double weight() {
 		return weight;
 	}
 	/**
 	 * @param v
-	 * @return ¸ÃÓĞÏò±ßµÄÔ´¶¥µã
+	 * @return è¯¥æœ‰å‘è¾¹çš„æºé¡¶ç‚¹
 	 */
 	public int from() {
 		return v;
 	}
 	/**
-	 * @return ¸ÃÓĞÏò±ßËùÖ¸ÏòµÄ¶¥µã
+	 * @return è¯¥æœ‰å‘è¾¹æ‰€æŒ‡å‘çš„é¡¶ç‚¹
 	 */
 	public int to() {
 		return w;
@@ -41,7 +41,6 @@ public class DirectedEdge {
 		return String.format("%d-%d %.2f", v, w, weight);
 	}
 }
-
 
 
 

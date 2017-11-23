@@ -1,11 +1,11 @@
 
 public class AcyclicSP {
 	
-	//×î¶ÌÂ·¾¶Ê÷ÉÏµÄËùÓĞ±ß
+	//æœ€çŸ­è·¯å¾„æ ‘ä¸Šçš„æ‰€æœ‰è¾¹
 	private DirectedEdge[] edgeTo;
-	//Ô´µãsµ½ËùÓĞ¶¥µãµÄ×î¶ÌÂ·¾¶
+	//æºç‚¹såˆ°æ‰€æœ‰é¡¶ç‚¹çš„æœ€çŸ­è·¯å¾„
 	private double[] distTo;
-	//Ô´µã
+	//æºç‚¹
 	private int s;
 	
 	public AcyclicSP(EdgeWeightedDigraph G, int s) {
@@ -24,21 +24,21 @@ public class AcyclicSP {
 	
 	/**
 	 * @param v 
-	 * @return Ô´µãsµ½¶¥µãvµÄÈ¨ÖµºÍ
+	 * @return æºç‚¹såˆ°é¡¶ç‚¹vçš„æƒå€¼å’Œ
 	 */
 	public double distTo(int v) {
 		return distTo[v];
 	}
 	/**
 	 * @param v
-	 * @return Ô´µãsµ½¶¥µãvµÄÂ·¾¶ÊÇ·ñ´æÔÚ
+	 * @return æºç‚¹såˆ°é¡¶ç‚¹vçš„è·¯å¾„æ˜¯å¦å­˜åœ¨
 	 */
 	public boolean hasPathTo(int v) {
 		return distTo[v] < Double.POSITIVE_INFINITY;
 	}
 	/**
 	 * @param v
-	 * @return Ô´µãsµ½¶¥µãvµÄÂ·¾¶
+	 * @return æºç‚¹såˆ°é¡¶ç‚¹vçš„è·¯å¾„
 	 */
 	public Iterable<DirectedEdge> pathTo(int v) {
 		if(!hasPathTo(v)) return null;

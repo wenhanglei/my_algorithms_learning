@@ -5,25 +5,25 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class BST<Key extends Comparable<Key>, Value> {
 	/**
-	 * ¹¹ÔìÊ÷½á¹¹µÄ½ÚµãÀà
+	 * æ„é€ æ ‘ç»“æ„çš„èŠ‚ç‚¹ç±»
 	 * @author Administrator
 	 *
 	 */
 	private class Node{
-		//±£´æµÄ½¡
+		//ä¿å­˜çš„å¥
 		private Key key;
-		//±£´æµÄÖµ
+		//ä¿å­˜çš„å€¼
 		private Value val;
-		//×ó×ÓÊ÷½Úµã
+		//å·¦å­æ ‘èŠ‚ç‚¹
 		Node left;
-		//ÓÒ×ÓÊ÷½Úµã
+		//å³å­æ ‘èŠ‚ç‚¹
 		Node right;
-		//¸Ã½ÚµãËùÓĞµÄ×Ó½ÚµãµÄ¸öÊı
+		//è¯¥èŠ‚ç‚¹æ‰€æœ‰çš„å­èŠ‚ç‚¹çš„ä¸ªæ•°
 		private int N;
-		//Ä¬ÈÏ¹¹Ôìº¯Êı
+		//é»˜è®¤æ„é€ å‡½æ•°
 		Node() {
 		}
-		//´ø²ÎÊıµÄ¹¹Ôìº¯Êı
+		//å¸¦å‚æ•°çš„æ„é€ å‡½æ•°
 		Node(Key key, Value val, int N) {
 			this.key = key;
 			this.val = val;
@@ -31,15 +31,15 @@ public class BST<Key extends Comparable<Key>, Value> {
 		}
 	}
 	
-	//¸ù½Úµã
+	//æ ¹èŠ‚ç‚¹
 	private Node root;
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 */
 	public BST(){
 	}
 	/**
-	 * Ìí¼Ó¼üÖµ¶Ô
+	 * æ·»åŠ é”®å€¼å¯¹
 	 * @param key
 	 * @param val
 	 */
@@ -47,7 +47,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 		root = put(root, key, val);
 	}
 	/**
-	 * ¸¨Öúµİ¹éº¯Êı
+	 * è¾…åŠ©é€’å½’å‡½æ•°
 	 * @param n
 	 * @param key
 	 * @param val
@@ -66,7 +66,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 		return n;
 	}
 	/**
-	 * »ñÈ¡¼üÎ»keyµÄÖµ
+	 * è·å–é”®ä½keyçš„å€¼
 	 * @param key
 	 * @return
 	 */
@@ -74,7 +74,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 		return get(root, key);
 	}
 	/**
-	 * µİ¹é¸¨Öúº¯Êı
+	 * é€’å½’è¾…åŠ©å‡½æ•°
 	 * @param x
 	 * @param key
 	 * @return
@@ -87,7 +87,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 		else return get(x.right, key);
 	}
 	/**
-	 * ·µ»Ø×îĞ¡µÄ½¡
+	 * è¿”å›æœ€å°çš„å¥
 	 * @return
 	 */
 	Key min() {
@@ -98,7 +98,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 		else return min(x.left);
 	}
 	/**
-	 * ·µ»Ø×î´óµÄ½¡
+	 * è¿”å›æœ€å¤§çš„å¥
 	 * @return
 	 */
 	Key max() {
@@ -109,7 +109,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 		else return max(x.right);
 	}
 	/**
-	 * ·µ»Ø×î½üµÄĞ¡ÓÚkeyµÄ½¡
+	 * è¿”å›æœ€è¿‘çš„å°äºkeyçš„å¥
 	 * @param key
 	 * @return
 	 */
@@ -129,7 +129,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 		else return x;
 	}
 	/**
-	 * ·µ»Ø×î½üµÄ´óÓÚkeyµÄ½¡
+	 * è¿”å›æœ€è¿‘çš„å¤§äºkeyçš„å¥
 	 * @param key
 	 * @return
 	 */
@@ -149,7 +149,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 		else return x;
 	}
 	/**
-	 * ·µ»ØµÚk¸ö½¡
+	 * è¿”å›ç¬¬kä¸ªå¥
 	 * @param k
 	 * @return
 	 */
@@ -169,7 +169,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 		}
 	}
 	/**
-	 * ·µ»ØkeyµÄÅÅĞò
+	 * è¿”å›keyçš„æ’åº
 	 * @param key
 	 * @return
 	 */
@@ -187,7 +187,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 		}
 	}
 	/**
-	 * É¾³ı×îĞ¡µÄkey
+	 * åˆ é™¤æœ€å°çš„key
 	 */
 	void deleteMin() {
 		root = deleteMin(root);
@@ -203,7 +203,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 		}
 	}
 	/**
-	 * É¾³ı×î´óµÄkey
+	 * åˆ é™¤æœ€å¤§çš„key
 	 */
 	void deleteMax() {
 		root = deleteMax(root);
@@ -218,7 +218,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 		}
 	}
 	/**
-	 * É¾³ı¼üÖµ¶Ô
+	 * åˆ é™¤é”®å€¼å¯¹
 	 * @param key
 	 */
 	public void delete(Key key) {
@@ -247,14 +247,14 @@ public class BST<Key extends Comparable<Key>, Value> {
 		}
 	}
 	/**
-	 * ·µ»Ø¸Ã·ûºÅ±íµÄµü´úÆ÷
+	 * è¿”å›è¯¥ç¬¦å·è¡¨çš„è¿­ä»£å™¨
 	 * @return
 	 */
 	public Iterable<Key> keys() {
 		return keys(min(), max());
 	}
 	/**
-	 * ·µ»ØÎ»ÓÚloÓëhiÖ®¼äµÄËùÓĞkey
+	 * è¿”å›ä½äºloä¸hiä¹‹é—´çš„æ‰€æœ‰key
 	 * @param lo
 	 * @param hi
 	 * @return
@@ -276,7 +276,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 		print(root, lo, hi);
 	}
 	/**
-	 * ÖĞĞò±éÀú
+	 * ä¸­åºéå†
 	 * @param x
 	 */
 	private void print(Node x, Key lo, Key hi){
@@ -285,21 +285,21 @@ public class BST<Key extends Comparable<Key>, Value> {
 		int ch = x.key.compareTo(hi);
 		if(cl < 0) return;
 		if(ch > 0) return;
-		//ÖĞĞò±éÀú
+		//ä¸­åºéå†
 		print(x.left, lo, hi);
 		System.out.print(x.key);
 		print(x.right, lo, hi);
-		//Ç°Ğò±éÀú
+		//å‰åºéå†
 //		System.out.println(x.key);
 //		print(x.left);
 //		print(x.right);
-		//ºóĞø±éÀú
+		//åç»­éå†
 //		print(x.left);
 //		print(x.right);
 //		System.out.println(x.key);
 	}
 	/**
-	 * »ñÈ¡½ÚµãµÄ¼ÆÊı
+	 * è·å–èŠ‚ç‚¹çš„è®¡æ•°
 	 * @param n
 	 * @return
 	 */
@@ -308,12 +308,12 @@ public class BST<Key extends Comparable<Key>, Value> {
 		else return n.N;
 	}
 	/**
-	 * ²âÊÔº¯Êı
+	 * æµ‹è¯•å‡½æ•°
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		String[] data = {"S", "E", "A", "R", "C", "H", "E", "X", "A", "M", "P", "L", "E"};
-		//¹¹Ôì¶ş·Ö²éÕÒÊ÷
+		//æ„é€ äºŒåˆ†æŸ¥æ‰¾æ ‘
 		BST<String, Integer> bst = new BST<String, Integer>();
 		for(int i = 0; i < data.length; i++) {
 			bst.put(data[i], i);
@@ -323,7 +323,6 @@ public class BST<Key extends Comparable<Key>, Value> {
 		}
 	}
 }
-
 
 
 

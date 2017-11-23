@@ -1,21 +1,21 @@
 
 public class BinarySearchST<Key extends Comparable<Key>, Value> {
 	
-	//±£´æ½¡µÄÊı×é
+	//ä¿å­˜å¥çš„æ•°ç»„
 	private Key[] keys;
-	//±£´æÖµµÄÊı×é
+	//ä¿å­˜å€¼çš„æ•°ç»„
 	private Value[] values;
-	//·ûºÅ±íµÄ´óĞ¡
+	//ç¬¦å·è¡¨çš„å¤§å°
 	private int N = 0;
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 */
 	public BinarySearchST(int capacity) {
 		keys = (Key[])new Comparable[capacity];
 		values = (Value[])new Object[capacity];
 	}
 	/**
-	 * Ìí¼Óitem
+	 * æ·»åŠ item
 	 * @param key
 	 * @param val
 	 */
@@ -31,7 +31,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 		N++;
 	}
 	/**
-	 * ·µ»Ø½¡keyµÄÖµ
+	 * è¿”å›å¥keyçš„å€¼
 	 * @param key
 	 * @return
 	 */
@@ -43,14 +43,14 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 			return null;
 	}
 	/**
-	 * É¾³ı¼üÖµ¶Ô
+	 * åˆ é™¤é”®å€¼å¯¹
 	 * @param key
 	 */
 	public void delete(Key key) {
 		
 	}
 	/**
-	 * ÊÇ·ñº¬ÓĞ½¡ÎªkeyµÄitem
+	 * æ˜¯å¦å«æœ‰å¥ä¸ºkeyçš„item
 	 * @param key
 	 * @return
 	 */
@@ -58,35 +58,35 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 		return false;
 	}
 	/**
-	 * ÊÇ·ñÎª¿Õ
+	 * æ˜¯å¦ä¸ºç©º
 	 * @return
 	 */
 	boolean isEmpty() {
 		return N <= 0;
 	}
 	/**
-	 * ·µ»ØsymboltableµÄ´óĞ¡
+	 * è¿”å›symboltableçš„å¤§å°
 	 * @return
 	 */
 	int size() {
 		return N;
 	}
 	/**
-	 * ·µ»Ø×îĞ¡µÄ½¡
+	 * è¿”å›æœ€å°çš„å¥
 	 * @return
 	 */
 	Key min() {
 		return keys[0];
 	}
 	/**
-	 * ·µ»Ø×î´óµÄ½¡
+	 * è¿”å›æœ€å¤§çš„å¥
 	 * @return
 	 */
 	Key max() {
 		return keys[N-1];
 	}
 	/**
-	 * ·µ»Ø×î½üµÄĞ¡ÓÚkeyµÄ½¡
+	 * è¿”å›æœ€è¿‘çš„å°äºkeyçš„å¥
 	 * @param key
 	 * @return
 	 */
@@ -94,7 +94,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 		return null;
 	}
 	/**
-	 * ·µ»Ø×î½üµÄ´óÓÚkeyµÄ½¡
+	 * è¿”å›æœ€è¿‘çš„å¤§äºkeyçš„å¥
 	 * @param key
 	 * @return
 	 */
@@ -102,7 +102,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 		return keys[rank(key)];
 	}
 	/**
-	 * ·µ»ØkeyµÄÅÅĞò
+	 * è¿”å›keyçš„æ’åº
 	 * @param key
 	 * @return
 	 */
@@ -123,7 +123,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 		return mid;
 	}
 	/**
-	 * ·µ»ØµÚk¸ö½¡
+	 * è¿”å›ç¬¬kä¸ªå¥
 	 * @param k
 	 * @return
 	 */
@@ -131,19 +131,19 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 		return keys[k];
 	}
 	/**
-	 * É¾³ı×îĞ¡µÄkey
+	 * åˆ é™¤æœ€å°çš„key
 	 */
 	void deleteMin() {
 		
 	}
 	/**
-	 * É¾³ı×î´óµÄkey
+	 * åˆ é™¤æœ€å¤§çš„key
 	 */
 	void deleteMax() {
 		
 	}
 	/**
-	 * ·µ»ØloÓëhiÖ®¼äµÄkeyµÄ¸öÊı
+	 * è¿”å›loä¸hiä¹‹é—´çš„keyçš„ä¸ªæ•°
 	 * @param lo
 	 * @param hi
 	 * @return
@@ -152,7 +152,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 		return 0;
 	}
 	/**
-	 * ·µ»Ølo£¬hiÖ®¼äµÄkeyµÄµü´úÆ÷
+	 * è¿”å›loï¼Œhiä¹‹é—´çš„keyçš„è¿­ä»£å™¨
 	 * @param lo
 	 * @param hi
 	 * @return
@@ -161,7 +161,6 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 		return null;
 	}
 }
-
 
 
 

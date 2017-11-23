@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * ÇóºÍÎª0µÄÈı¸öÊıµÄÊıÁ¿
+ * æ±‚å’Œä¸º0çš„ä¸‰ä¸ªæ•°çš„æ•°é‡
  * @author Administrator
  *
  */

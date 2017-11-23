@@ -3,11 +3,11 @@ import java.util.Arrays;
 
 public class MergeBU {
 	/**
-	 * ¸¨ÖúÊı×é
+	 * è¾…åŠ©æ•°ç»„
 	 */
 	private static Comparable[] aux;
 	/**
-	 * ÅÅĞòËã·¨
+	 * æ’åºç®—æ³•
 	 */
 	public void sort(Comparable[] a) {
 		int N = a.length;
@@ -17,7 +17,7 @@ public class MergeBU {
 				merge(a, i, i+sz-1, Math.min(i+sz+sz-1, N-1));
 	}
 	/**
-	 * ¹é²¢·½·¨
+	 * å½’å¹¶æ–¹æ³•
 	 * @param a
 	 * @param lo
 	 * @param mid
@@ -43,13 +43,13 @@ public class MergeBU {
 	}
 	
 	/**
-	 * ±È½Ï´óĞ¡
+	 * æ¯”è¾ƒå¤§å°
 	 */
 	private static boolean less(Comparable a, Comparable b) {
 		return (a.compareTo(b) < 0);
 	}
 	/**
-	 * ½»»»Î»ÖÃ
+	 * äº¤æ¢ä½ç½®
 	 * @param arr
 	 */
 	private void exch(Comparable[] arr, int a, int b) {
@@ -58,7 +58,7 @@ public class MergeBU {
 		arr[b] = tmp;
 	}
 	/**
-	 * ÏÔÊ¾ÅÅĞò½á¹û
+	 * æ˜¾ç¤ºæ’åºç»“æœ
 	 */
 	public void show(Comparable[] a){
 		for(int i = 0; i < a.length; i++) {
@@ -69,7 +69,7 @@ public class MergeBU {
 		}
 	}
 	/**
-	 * ²âÊÔÓÃµÄÖ÷º¯Êı
+	 * æµ‹è¯•ç”¨çš„ä¸»å‡½æ•°
 	 */
 	public static void main(String[] args) {
 		String[] data = {"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"};

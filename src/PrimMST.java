@@ -6,7 +6,7 @@ public class PrimMST {
 	private IndexMinPQ<Double> pq;
 	
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 * @param G
 	 */
 	public PrimMST(EdgeWeightedGraph G) {
@@ -14,14 +14,14 @@ public class PrimMST {
 		distTo = new double[G.V()];
 		pq = new IndexMinPQ<Double>(G.V());
 		
-		//Ìí¼Ó¶¥µã0µ½×îĞ¡Éú³ÉÊ÷
+		//æ·»åŠ é¡¶ç‚¹0åˆ°æœ€å°ç”Ÿæˆæ ‘
 		distTo[0] = 0;
 		visit(G, 0);
 	}
 	private void visit(EdgeWeightedGraph G, int x) {
 		for(Edge v : G.adj(x)) {
 			int w = v.other(x);
-			//Èç¹û¸Ã¶¥µã²»´æÔÚÁ¬½Óµ½×îĞ¡Éú³ÉÊ÷µÄ±ß
+			//å¦‚æœè¯¥é¡¶ç‚¹ä¸å­˜åœ¨è¿æ¥åˆ°æœ€å°ç”Ÿæˆæ ‘çš„è¾¹
 			if(edgeTo[w] != null && (v.weight() > distTo[w]))
 				continue;
 			else if(edgeTo[w] == null)
@@ -34,7 +34,7 @@ public class PrimMST {
 		visit(G, v);
 	}
 	/**
-	 * @return ×îĞ¡Éú³ÉÊ÷µÄËùÓĞ±ß
+	 * @return æœ€å°ç”Ÿæˆæ ‘çš„æ‰€æœ‰è¾¹
 	 */
 	public Iterable<Edge> edges() {
 		Queue<Edge> q = new Queue<Edge>();
@@ -44,7 +44,7 @@ public class PrimMST {
 		return q;
 	}
 	/**
-	 * @return ×îĞ¡Éú³ÉÊ÷µÄ×ÜÈ¨Öµ
+	 * @return æœ€å°ç”Ÿæˆæ ‘çš„æ€»æƒå€¼
 	 */
 	public double weight() {
 		double sum = 0;
@@ -53,7 +53,6 @@ public class PrimMST {
 		return sum;
 	}
 }
-
 
 
 

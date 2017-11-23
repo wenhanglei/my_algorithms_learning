@@ -1,7 +1,7 @@
 
 public class SequentialSearchST<Key, Value> {
 	/**
-	 * ½ÚµãÄÚ²¿ÀàÓÉÓÚ´æ´¢ÔªÊı¾İ
+	 * èŠ‚ç‚¹å†…éƒ¨ç±»ç”±äºå­˜å‚¨å…ƒæ•°æ®
 	 * @author Administrator
 	 *
 	 */
@@ -15,16 +15,16 @@ public class SequentialSearchST<Key, Value> {
 			this.next = next;
 		}
 	}
-	//Í·½áµã
+	//å¤´ç»“ç‚¹
 	private Node head;
-	//·ûºÅ±íµÄsize
+	//ç¬¦å·è¡¨çš„size
 	private int N=0;
 	/**
-	 * ·ûºÅ±íµÄ³õÊ¼»¯º¯Êı
+	 * ç¬¦å·è¡¨çš„åˆå§‹åŒ–å‡½æ•°
 	 */
 	SequentialSearchST() {}
 	/**
-	 * ±£´æ¼üÖµ¶Ô
+	 * ä¿å­˜é”®å€¼å¯¹
 	 * @param key
 	 * @param val
 	 */
@@ -41,7 +41,7 @@ public class SequentialSearchST<Key, Value> {
 		N++;
 	}
 	/**
-	 * »ñÈ¡¶ÔÓ¦¼üµÄÖµ
+	 * è·å–å¯¹åº”é”®çš„å€¼
 	 * @param key
 	 * @return
 	 */
@@ -56,7 +56,7 @@ public class SequentialSearchST<Key, Value> {
 		return null;
 	}
 	/**
-	 * É¾³ı¼üÖµ¶Ô
+	 * åˆ é™¤é”®å€¼å¯¹
 	 * @param key
 	 */
 	void delete(Key key) {
@@ -64,7 +64,7 @@ public class SequentialSearchST<Key, Value> {
 		N--;
 	}
 	/**
-	 * ÊÇ·ñº¬ÓĞ½¡ÎªkeyµÄ¼üÖµ¶Ô
+	 * æ˜¯å¦å«æœ‰å¥ä¸ºkeyçš„é”®å€¼å¯¹
 	 * @param key
 	 * @return
 	 */
@@ -72,21 +72,21 @@ public class SequentialSearchST<Key, Value> {
 		return get(key) != null;
 	}
 	/**
-	 * ·ûºÅ±íÊÇ·ñÎª¿Õ
+	 * ç¬¦å·è¡¨æ˜¯å¦ä¸ºç©º
 	 * @return
 	 */
 	boolean isEmpty() {
 		return N == 0;
 	}
 	/**
-	 * ·µ»Ø·ûºÅ±íµÄ´óĞ¡
+	 * è¿”å›ç¬¦å·è¡¨çš„å¤§å°
 	 * @return
 	 */
 	int size() {
 		return N;
 	}
 	/**
-	 * ·µ»Økeyµü´úÆ÷
+	 * è¿”å›keyè¿­ä»£å™¨
 	 * @return
 	 */
 	Iterable<Key> keys() {
@@ -94,14 +94,13 @@ public class SequentialSearchST<Key, Value> {
 	}
 	public static void main(String[] args) {
 		String[] data = {"S", "E", "A", "R", "C", "H", "E", "X", "A", "M", "P", "L", "E"};
-		//ÓÃÓÚ×°ÔØÊı¾İµÄ·ûºÅ±í
+		//ç”¨äºè£…è½½æ•°æ®çš„ç¬¦å·è¡¨
 		SequentialSearchST<String, Integer> st = new SequentialSearchST<String, Integer>();
 		for(int i = 0; i < data.length; i++) {
 			st.put(data[i], i);
 		}
 	}
 }
-
 
 
 

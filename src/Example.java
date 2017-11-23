@@ -3,26 +3,26 @@ import java.util.Scanner;
 
 public class Example {
 	/**
-	 * ÅÅĞòËã·¨
+	 * æ’åºç®—æ³•
 	 */
 	public void sort(Comparable[] a) {}
 	/**
-	 * ±È½Ï´óĞ¡
+	 * æ¯”è¾ƒå¤§å°
 	 */
 	private boolean less(Comparable a, Comparable b) {
 		return false;
 	}
 	/**
-	 * ½»»»Î»ÖÃ
+	 * äº¤æ¢ä½ç½®
 	 * @param arr
 	 */
 	private void exch(Comparable[] arr) {}
 	/**
-	 * ÏÔÊ¾ÅÅĞò½á¹û
+	 * æ˜¾ç¤ºæ’åºç»“æœ
 	 */
 	private void show(){}
 	/**
-	 * ²âÊÔÓÃµÄÖ÷º¯Êı
+	 * æµ‹è¯•ç”¨çš„ä¸»å‡½æ•°
 	 */
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
@@ -33,7 +33,6 @@ public class Example {
 	}
 
 }
-
 
 
 

@@ -1,7 +1,7 @@
 
 public class Insertion {
 	/**
-	 * ÅÅĞòËã·¨
+	 * æ’åºç®—æ³•
 	 */
 	public void sort(Comparable[] a) {
 		int N = a.length;
@@ -24,13 +24,13 @@ public class Insertion {
 		}
 	}*/
 	/**
-	 * ±È½Ï´óĞ¡
+	 * æ¯”è¾ƒå¤§å°
 	 */
 	private boolean less(Comparable a, Comparable b) {
 		return (a.compareTo(b) < 0);
 	}
 	/**
-	 * ½»»»Î»ÖÃ
+	 * äº¤æ¢ä½ç½®
 	 * @param arr
 	 */
 	private void exch(Comparable[] arr, int a, int b) {
@@ -39,7 +39,7 @@ public class Insertion {
 		arr[b] = tmp;
 	}
 	/**
-	 * ÏÔÊ¾ÅÅĞò½á¹û
+	 * æ˜¾ç¤ºæ’åºç»“æœ
 	 */
 	public void show(Comparable[] a){
 		for(int i = 0; i < a.length; i++) {
@@ -50,7 +50,7 @@ public class Insertion {
 		}
 	}
 	/**
-	 * ²âÊÔÓÃµÄÖ÷º¯Êı
+	 * æµ‹è¯•ç”¨çš„ä¸»å‡½æ•°
 	 */
 	public static void main(String[] args) {
 		String[] data = {"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"};

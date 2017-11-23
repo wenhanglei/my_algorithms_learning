@@ -1,17 +1,17 @@
 
 public class ST<Key, Value> {
 	/**
-	 * ·ûºÅ±íµÄ³õÊ¼»¯º¯Êı
+	 * ç¬¦å·è¡¨çš„åˆå§‹åŒ–å‡½æ•°
 	 */
 	ST() {}
 	/**
-	 * ±£´æ¼üÖµ¶Ô
+	 * ä¿å­˜é”®å€¼å¯¹
 	 * @param key
 	 * @param val
 	 */
 	void put(Key key, Value val) {}
 	/**
-	 * »ñÈ¡¶ÔÓ¦¼üµÄÖµ
+	 * è·å–å¯¹åº”é”®çš„å€¼
 	 * @param key
 	 * @return
 	 */
@@ -19,12 +19,12 @@ public class ST<Key, Value> {
 		return null;
 	}
 	/**
-	 * É¾³ı¼üÖµ¶Ô
+	 * åˆ é™¤é”®å€¼å¯¹
 	 * @param key
 	 */
 	void delete(Key key) {}
 	/**
-	 * ÊÇ·ñº¬ÓĞ½¡ÎªkeyµÄ¼üÖµ¶Ô
+	 * æ˜¯å¦å«æœ‰å¥ä¸ºkeyçš„é”®å€¼å¯¹
 	 * @param key
 	 * @return
 	 */
@@ -32,28 +32,27 @@ public class ST<Key, Value> {
 		return false;
 	}
 	/**
-	 * ·ûºÅ±íÊÇ·ñÎª¿Õ
+	 * ç¬¦å·è¡¨æ˜¯å¦ä¸ºç©º
 	 * @return
 	 */
 	boolean isEmpty() {
 		return false;
 	}
 	/**
-	 * ·µ»Ø·ûºÅ±íµÄ´óĞ¡
+	 * è¿”å›ç¬¦å·è¡¨çš„å¤§å°
 	 * @return
 	 */
 	int size() {
 		return 0;
 	}
 	/**
-	 * ·µ»Økeyµü´úÆ÷
+	 * è¿”å›keyè¿­ä»£å™¨
 	 * @return
 	 */
 	Iterable<Key> keys() {
 		return null;
 	}
 }
-
 
 
 

@@ -2,12 +2,12 @@
 public class KMP {
 	
 	private static int R;
-	//ÓĞÏŞ×Ô¶¯×´Ì¬»ú
+	//æœ‰é™è‡ªåŠ¨çŠ¶æ€æœº
 	private int[][] dfa;
 	private String pat;
 	
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 * @param pat
 	 */
 	public KMP(String pat) {

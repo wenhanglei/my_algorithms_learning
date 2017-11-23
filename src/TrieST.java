@@ -14,7 +14,7 @@ public class TrieST<Value> {
 	private int R;
 	
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 */
 	public TrieST(int R) {
 		root = new Node(R);
@@ -27,9 +27,9 @@ public class TrieST<Value> {
 	}
 	/**
 	 * @param s
-	 * @return ·µ»Ø½¡Îª sµÄÖµ
+	 * @return è¿”å›å¥ä¸º sçš„å€¼
 	 */
-	//get·½·¨µÄµİ¹éÊµÏÖ
+	//getæ–¹æ³•çš„é€’å½’å®ç°
 	public Value get(String key) {
 		if(key == null) return null;
 		Node curr = get(root, key, 0);
@@ -43,7 +43,7 @@ public class TrieST<Value> {
 		else return get(node.nodes[key.charAt(i)], key, i+1);
 	}
 	
-	//get·½·¨µÄ·Çµİ¹éÊµÏÖ
+	//getæ–¹æ³•çš„éé€’å½’å®ç°
 //	public Value get(String key) {
 //		if(key == null) return null;
 //		Node curr = root;
@@ -56,7 +56,7 @@ public class TrieST<Value> {
 //		else return null;
 //	}
 	/**
-	 * Ïò·ûºÅ±íÀïÌí¼Ó¼üÖµ¶Ô
+	 * å‘ç¬¦å·è¡¨é‡Œæ·»åŠ é”®å€¼å¯¹
 	 * @param s
 	 * @param v
 	 */
@@ -74,7 +74,7 @@ public class TrieST<Value> {
 		}
 	}
 	/**
-	 * É¾³ı½¡ÎªkeyµÄ¼üÖµ¶Ô
+	 * åˆ é™¤å¥ä¸ºkeyçš„é”®å€¼å¯¹
 	 * @param key
 	 */
 	public void delete(String key) {
@@ -97,20 +97,20 @@ public class TrieST<Value> {
 	}
 	/**
 	 * @param key
-	 * @return ¸Ã·ûºÅ±íÊÇ·ñ°üº¬½¡ÎªkeyµÄ¼üÖµ¶Ô
+	 * @return è¯¥ç¬¦å·è¡¨æ˜¯å¦åŒ…å«å¥ä¸ºkeyçš„é”®å€¼å¯¹
 	 */ 
 	public boolean contains(String key) {
 		return get(key) != null;
 	}
 	/**
-	 * @return ¸Ã·ûºÅ±íÊÇ·ñÎª¿Õ
+	 * @return è¯¥ç¬¦å·è¡¨æ˜¯å¦ä¸ºç©º
 	 */
 	public boolean isEmptry() {
 		return N <= 0;
 	}
 	/**
 	 * @param s
-	 * @return ¸Ã×Ö·û´®ÔÚ·ûºÅ±íÖĞµÄ×î³¤¹«¹²Ç°×º
+	 * @return è¯¥å­—ç¬¦ä¸²åœ¨ç¬¦å·è¡¨ä¸­çš„æœ€é•¿å…¬å…±å‰ç¼€
 	 */
 	public String longestPrefixOf(String s) {
 		if(s == null) return null;
@@ -129,7 +129,7 @@ public class TrieST<Value> {
 	
 	/**
 	 * @param s
-	 * @return ·ûºÅ±íÖĞ°üº¬Ç°×ºsµÄËùÓĞ×Ö·û´®
+	 * @return ç¬¦å·è¡¨ä¸­åŒ…å«å‰ç¼€sçš„æ‰€æœ‰å­—ç¬¦ä¸²
 	 */
 	public Iterable<String> keysWithPrefix(String s) {
 		Queue<String> q = new Queue<String>();
@@ -138,7 +138,7 @@ public class TrieST<Value> {
 	}
 	/**
 	 * @param s
-	 * @return ·µ»Ø·ûºÅ±íÖĞÓë×Ö·û´®sÏàÆ¥ÅäµÄËùÓĞ×Ö·û´®
+	 * @return è¿”å›ç¬¦å·è¡¨ä¸­ä¸å­—ç¬¦ä¸²sç›¸åŒ¹é…çš„æ‰€æœ‰å­—ç¬¦ä¸²
 	 */
 	public Iterable<String> keysThatMatch(String s) {
 		if(s == null) return null;
@@ -158,13 +158,13 @@ public class TrieST<Value> {
 	}
 	
 	/**
-	 * @return ·ûºÅ±íÖĞµÄ¼üÖµ¶Ô¸öÊı
+	 * @return ç¬¦å·è¡¨ä¸­çš„é”®å€¼å¯¹ä¸ªæ•°
 	 */
 	public int size() {
 		return N;
 	}
 	/**
-	 * @return ·µ»Ø·ûºÅ±íÖĞµÄËùÓĞ×Ö·û´®½¡
+	 * @return è¿”å›ç¬¦å·è¡¨ä¸­çš„æ‰€æœ‰å­—ç¬¦ä¸²å¥
 	 */
 	public Iterable<String> keys() {
 		return keysWithPrefix("");
@@ -182,7 +182,6 @@ public class TrieST<Value> {
 		}
 	}
 }
-
 
 
 

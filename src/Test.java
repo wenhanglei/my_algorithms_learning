@@ -30,9 +30,9 @@ public class Test {
 		
 		
 //		ResizingArrayStack<String> a = new ResizingArrayStack<String>(2);
-//		//·µ»ØstackµÄ´óĞ¡
+//		//è¿”å›stackçš„å¤§å°
 //		System.out.println(a.size());
-//		//ÊÇ·ñÎª¿Õ
+//		//æ˜¯å¦ä¸ºç©º
 //		System.out.println(a.isEmpty());
 //		a.push("hahah");
 //		a.push("kaka");

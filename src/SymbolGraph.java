@@ -8,7 +8,7 @@ public class SymbolGraph {
 	Graph G;
 	
 	/**
-	 * ·ûºÅÍ¼µÄ¹¹Ôìº¯Êı
+	 * ç¬¦å·å›¾çš„æ„é€ å‡½æ•°
 	 * @param filename
 	 * @param delim
 	 */
@@ -36,7 +36,7 @@ public class SymbolGraph {
 		}
 	}
 	/**
-	 * Í¼ÊÇ·ñ°üº¬¶¥µãkey
+	 * å›¾æ˜¯å¦åŒ…å«é¡¶ç‚¹key
 	 * @param key
 	 * @return
 	 */
@@ -44,7 +44,7 @@ public class SymbolGraph {
 		return st.containsKey(key);
 	}
 	/**
-	 * ·µ»ØÏÂ±êvµÄkey
+	 * è¿”å›ä¸‹æ ‡vçš„key
 	 * @param v
 	 * @return
 	 */
@@ -52,7 +52,7 @@ public class SymbolGraph {
 		return keys[v];
 	}
 	/**
-	 * ·µ»Ø¶¥µãkeyµÄÏÂ±ê
+	 * è¿”å›é¡¶ç‚¹keyçš„ä¸‹æ ‡
 	 * @param key
 	 * @return
 	 */
@@ -60,14 +60,13 @@ public class SymbolGraph {
 		return (int)st.get(key);
 	}
 	/**
-	 * ·µ»Øµ×²ãÍ¼
+	 * è¿”å›åº•å±‚å›¾
 	 * @return
 	 */
 	public Graph G() {
 		return G;
 	}
 }
-
 
 
 

@@ -1,15 +1,15 @@
 
 public class MSD {
 	
-	//×ÖÄ¸±íÖĞ×ÖÄ¸×ÜÊı
+	//å­—æ¯è¡¨ä¸­å­—æ¯æ€»æ•°
 	private static int R = 256;
 	private static String[] aux;
-	//×ÖÄ¸±í
+	//å­—æ¯è¡¨
 	private static Alphabet alpha;
 
 	
 	/**
-	 * ×î¸ßÓĞĞ§Î»×Ö·û´®ÅÅĞòÊµÏÖ
+	 * æœ€é«˜æœ‰æ•ˆä½å­—ç¬¦ä¸²æ’åºå®ç°
 	 */
 	public static void sort(String[] a) {
 		if(a == null) return;
@@ -17,27 +17,27 @@ public class MSD {
 	}
 	
 	private static void sort(String[] a, int lo, int hi, int index){
-		//»ñÈ¡×Ö·û´®Êı×éµÄ´óĞ¡
+		//è·å–å­—ç¬¦ä¸²æ•°ç»„çš„å¤§å°
 		int N = hi-lo;
-		//´´½¨¸¨ÖúÊı×é
+		//åˆ›å»ºè¾…åŠ©æ•°ç»„
 		aux = new String[N];
-		//´´½¨ÆµÂÊ¼ÆÊıÊı×é
+		//åˆ›å»ºé¢‘ç‡è®¡æ•°æ•°ç»„
 		int[] count = new int[R+2];
-		//»ñÈ¡×î¸ßÓĞĞ§Î»»ùÊıÎªRµÄË÷Òı
+		//è·å–æœ€é«˜æœ‰æ•ˆä½åŸºæ•°ä¸ºRçš„ç´¢å¼•
 		for(int i = 0; i < N; i++) {
 			int msd = (int)toChar(a[i], index)+1;
 			count[msd+1]++;
 		}
-		//¼ÆËã×îµÍÓĞĞ§Î»µÄÏÂ±ê
+		//è®¡ç®—æœ€ä½æœ‰æ•ˆä½çš„ä¸‹æ ‡
 		for(int i = 0; i < N; i++) {
 			count[i+1] += count[i];
 		}
-		//¶Ô¸¨ÖúÊı×é½øĞĞÅÅĞò
+		//å¯¹è¾…åŠ©æ•°ç»„è¿›è¡Œæ’åº
 		for(int i = 0; i < N; i++) {
 			int msd = (int)toChar(a[i], index)+1;
 			aux[count[msd]++] = a[i];
 		}
-		//ĞŞ¸ÄÔ­Êı×éÖĞµÄÅÅĞò
+		//ä¿®æ”¹åŸæ•°ç»„ä¸­çš„æ’åº
 		for(int i = 0; i < N; i++) {
 			a[i] = aux[i];
 		}
@@ -56,7 +56,6 @@ public class MSD {
 		
 	}
 }
-
 
 
 

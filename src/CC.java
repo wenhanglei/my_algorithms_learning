@@ -1,15 +1,15 @@
 
 public class CC {
 	
-	//¶¥µã±éÀú±êÖ¾
+	//é¡¶ç‚¹éå†æ ‡å¿—
 	private boolean[] marked;
-	//¶¥µãËùÊôµÄÁ¬Í¨×ÓÍ¼µÄid
+	//é¡¶ç‚¹æ‰€å±çš„è¿é€šå­å›¾çš„id
 	private int[] id;
-	//Á¬Í¨×ÓÍ¼µÄ¸öÊı
+	//è¿é€šå­å›¾çš„ä¸ªæ•°
 	private int N;
 	
 	/**
-	 * Á¬Í¨×ÓÍ¼µÄ¹¹Ôìº¯Êı
+	 * è¿é€šå­å›¾çš„æ„é€ å‡½æ•°
 	 * @param G
 	 */
 	public CC(Graph G) {
@@ -33,7 +33,7 @@ public class CC {
 		}
 	}
 	/**
-	 * ¶¥µãvºÍwÊÇ·ñÏàÁ¬
+	 * é¡¶ç‚¹vå’Œwæ˜¯å¦ç›¸è¿
 	 * @param v
 	 * @param w
 	 * @return
@@ -42,14 +42,14 @@ public class CC {
 		return id[v] == id[w];
 	}
 	/**
-	 * Á¬Í¨×ÓÍ¼µÄ¸öÊı
+	 * è¿é€šå­å›¾çš„ä¸ªæ•°
 	 * @return
 	 */
 	public int count() {
 		return N;
 	}
 	/**
-	 * ¶¥µãvÊôÓÚÄÄ¸öÁ¬Í¨Í¼
+	 * é¡¶ç‚¹vå±äºå“ªä¸ªè¿é€šå›¾
 	 * @param v
 	 * @return
 	 */
@@ -57,11 +57,11 @@ public class CC {
 		return id[v];
 	}
 	/**
-	 * ²âÊÔº¯Êı
+	 * æµ‹è¯•å‡½æ•°
 	 */
 	public static void main(String[] args) {
 		/*
-		 *Í¨¹ı¿ØÖÆÌ¨²ÎÊı¹¹ÔìÍ¼¶ÔÏó 
+		 *é€šè¿‡æ§åˆ¶å°å‚æ•°æ„é€ å›¾å¯¹è±¡ 
 		 */
 		Graph g = new Graph(new In(args[0]));
 		CC cc = new CC(g);
@@ -82,7 +82,6 @@ public class CC {
 		}
 	}
 }
-
 
 
 

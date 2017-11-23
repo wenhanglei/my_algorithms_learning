@@ -5,7 +5,7 @@ public class EdgeWeightedGraph {
 	private final int V;
 	private int E;
 	/**
-	 * ¹¹Ôìº¯Êý
+	 * æž„é€ å‡½æ•°
 	 * @param V
 	 */
 	public EdgeWeightedGraph(int V) {
@@ -17,7 +17,7 @@ public class EdgeWeightedGraph {
 		}
 	}
 	/**
-	 * ¹¹Ôìº¯Êý
+	 * æž„é€ å‡½æ•°
 	 * @param in
 	 */
 	public EdgeWeightedGraph(In in) {
@@ -35,19 +35,19 @@ public class EdgeWeightedGraph {
 		}	
 	}
 	/**
-	 * @return ·µ»Ø¶¥µãÊý
+	 * @return è¿”å›žé¡¶ç‚¹æ•°
 	 */
 	public int V() {
 		return edgeTo.length;
 	}
 	/**
-	 * @return ·µ»Ø±ßÊý
+	 * @return è¿”å›žè¾¹æ•°
 	 */
 	public int E() {
 		return E;
 	}
 	/**
-	 * Ìí¼Ó±ß
+	 * æ·»åŠ è¾¹
 	 * @param e
 	 */
 	public void addEdge(Edge e) {
@@ -59,13 +59,13 @@ public class EdgeWeightedGraph {
 	}
 	/**
 	 * @param v
-	 * @return ·µ»Ø¶¥µãvµÄËùÓÐÁÚ±ß
+	 * @return è¿”å›žé¡¶ç‚¹vçš„æ‰€æœ‰é‚»è¾¹
 	 */
 	public Iterable<Edge> adj(int v) {
 		return edgeTo[v];
 	}
 	/**
-	 * @return ¸ÃÍ¼µÄËùÓÐ±ß
+	 * @return è¯¥å›¾çš„æ‰€æœ‰è¾¹
 	 */
 	public Iterable<Edge> edges() {
 		Bag<Edge> edges = new Bag<Edge>();
@@ -77,7 +77,6 @@ public class EdgeWeightedGraph {
 		return edges;
 	}
 }
-
 
 
 

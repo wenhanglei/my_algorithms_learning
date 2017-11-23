@@ -9,7 +9,7 @@ public class KruskalMST {
 	
 	
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 * @param G
 	 */
 	public KruskalMST(EdgeWeightedGraph G) {
@@ -18,7 +18,7 @@ public class KruskalMST {
 		weight = new int[G.V()];
 		mst = new Queue<Edge>();
 		marked = new boolean[G.V()];
-		//³õÊ¼»¯ËùÓĞµÄ¶¥µã
+		//åˆå§‹åŒ–æ‰€æœ‰çš„é¡¶ç‚¹
 		for(int i = 0; i < vetex.length; i++) {
 			vetex[i] = i;
 			weight[i] = 1;
@@ -47,13 +47,13 @@ public class KruskalMST {
 //		}
 //	}
 	/**
-	 * @return ×îĞ¡Éú³ÉÊ÷ÖĞµÄËùÓĞ±ß
+	 * @return æœ€å°ç”Ÿæˆæ ‘ä¸­çš„æ‰€æœ‰è¾¹
 	 */
 	public Iterable<Edge> edges() {
 		return mst;
 	}
 	/**
-	 * @return ×îĞ¡Éú³ÉÊ÷µÄ×ÜÈ¨Öµ
+	 * @return æœ€å°ç”Ÿæˆæ ‘çš„æ€»æƒå€¼
 	 */
 	public double weight() {
 		double sum = 0;
@@ -82,7 +82,6 @@ public class KruskalMST {
 		}
 	}
 }
-
 
 
 

@@ -1,13 +1,13 @@
 /**
- * ¶ÁÈ¡¿ØÖÆÌ¨²ÎÊı´òÓ¡Ò»¸ö¶ş½øÖÆÁ÷µ½±ê×¼Êä³ö
+ * è¯»å–æ§åˆ¶å°å‚æ•°æ‰“å°ä¸€ä¸ªäºŒè¿›åˆ¶æµåˆ°æ ‡å‡†è¾“å‡º
  * @author Administrator
  *
  */
 public class BinaryDump {
 	public static void main(String[] args) {
-		//¶ÁÈ¡Ã¿¸ö×Ö·ûĞèÒªµÄÎ»¿í¶È
+		//è¯»å–æ¯ä¸ªå­—ç¬¦éœ€è¦çš„ä½å®½åº¦
 		int width = Integer.parseInt(args[0]);
-		//×ÜµÄ¶ş½øÖÆÎ»¸öÊı
+		//æ€»çš„äºŒè¿›åˆ¶ä½ä¸ªæ•°
 		int cnt;
 		for(cnt = 0; !BinaryStdIn.isEmpty(); cnt++) {
 			if(width == 0) continue;

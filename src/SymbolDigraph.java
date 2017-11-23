@@ -3,15 +3,15 @@ import java.util.HashMap;
 
 public class SymbolDigraph {
 	
-	//µ×²ãµÄÓĞÏòÍ¼
+	//åº•å±‚çš„æœ‰å‘å›¾
 	private Digraph G;
-	//±£´æË÷ÒıµÄmap
+	//ä¿å­˜ç´¢å¼•çš„map
 	private HashMap<String, Integer> st;
-	//ÓÃÓÚ²éÑ¯ÏÂ±ê¶ÔÓ¦µÄ¶¥µã×Ö·û´®µÄÊı×é
+	//ç”¨äºæŸ¥è¯¢ä¸‹æ ‡å¯¹åº”çš„é¡¶ç‚¹å­—ç¬¦ä¸²çš„æ•°ç»„
 	private String[] keys;
 	
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 */
 	public SymbolDigraph(String filename, String delim) {
 		st = new HashMap<String, Integer>();
@@ -38,7 +38,7 @@ public class SymbolDigraph {
 		
 	}
 	/**
-	 * ·µ»Ø×Ö·û´®¶¥µãÔÚË÷ÒıÍ¼ÖĞµÄÏÂ±ê
+	 * è¿”å›å­—ç¬¦ä¸²é¡¶ç‚¹åœ¨ç´¢å¼•å›¾ä¸­çš„ä¸‹æ ‡
 	 * @param name
 	 * @return
 	 */
@@ -46,7 +46,7 @@ public class SymbolDigraph {
 		return st.get(name);
 	}
 	/**
-	 * ·µ»Ø±íÊ¾ÏÂ±êÎªindexµÄ¶¥µãµÄ×Ö·û´®
+	 * è¿”å›è¡¨ç¤ºä¸‹æ ‡ä¸ºindexçš„é¡¶ç‚¹çš„å­—ç¬¦ä¸²
 	 * @param index
 	 * @return
 	 */
@@ -54,7 +54,7 @@ public class SymbolDigraph {
 		return keys[index];
 	}
 	/**
-	 * ·ûºÅÓĞÏòÍ¼ÊÇ·ñ°üº¬¶¥µãkey
+	 * ç¬¦å·æœ‰å‘å›¾æ˜¯å¦åŒ…å«é¡¶ç‚¹key
 	 * @param key
 	 * @return
 	 */
@@ -64,7 +64,7 @@ public class SymbolDigraph {
 		else return false;
 	}
 	/**
-	 * ·µ»Øµ×²ãµÄÓĞÏòÍ¼
+	 * è¿”å›åº•å±‚çš„æœ‰å‘å›¾
 	 * @return
 	 */
 	public Digraph G() {
@@ -72,7 +72,6 @@ public class SymbolDigraph {
 	}
 
 }
-
 
 
 
