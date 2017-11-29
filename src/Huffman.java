@@ -4,6 +4,13 @@
  *
  */
 public class Huffman {
+	//字符表的总的字符个数
+	private int R = 256;
+	//编码表
+	private String[] st;
+	//用于构建编码表的字典树
+	private Node root;
+	
 	/**
 	 * 节点类
 	 * @author Administrator
@@ -57,6 +64,47 @@ public class Huffman {
 		}
 		BinaryStdOut.close();
 	}
+	
+	/**
+	 * 压缩算法
+	 */
+	public void compress() {
+		if(st == null) throw new RuntimeException("编码表未初始化");
+		while(!BinaryStdIn.isEmpty()){
+			//从标准输入读取一个字符
+			char ch = BinaryStdIn.readChar();
+			String code = st[ch];
+			if(code != null && !code.equals("")){
+				for(int i = 0; i < code.length(); i++) {
+					BinaryStdOut.write(
+							code.charAt(i)=='1'?true:false);
+				}
+			}
+		}
+		BinaryStdOut.close();
+	}
+	
+	/**
+	 * 构建压缩编码需要使用到的编码表
+	 */
+	private void buildCode() {
+		/*
+		 * 1. 遍历整个字典树
+		 * 2. 保存经过的路径
+		 */
+		st = new String[R];
+		reverse(root, "");
+	}
+	
+	private void reverse(Node x, String code) {
+		if(x.isLeaf()) {
+			if(!code.equals("")) st[x.ch] = code;
+			return;
+		}
+		reverse(x.left, code+"0");
+		reverse(x.right, code+"1");
+	}
+	
 	/**
 	 * 读取输入流中的字典树
 	 * @return
@@ -64,6 +112,11 @@ public class Huffman {
 	private Node readTrie() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public static void main(String[] args) {
+		Huffman hfm = new Huffman();
+		hfm.compress();
 	}
 
 }
