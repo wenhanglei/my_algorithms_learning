@@ -8,17 +8,13 @@ import java.util.List;
  */
 public class Huffman {
 	//字符表的总的字符个数
-	private int R = 256;
-	//编码表
-	private String[] st;
-	//用于构建编码表的字典树
-	private Node root;
+	private static int R = 256;
 	
 	/**
 	 * 节点类
 	 * @author Administrator
 	 */
-	private class Node implements Comparable<Node>{
+	private static class Node implements Comparable<Node>{
 		//左字典树
 		private Node left;
 		//右字典树
@@ -27,9 +23,6 @@ public class Huffman {
 		private int freq;
 		//存储在该节点的字符
 		private char ch;
-		
-		public Node() {
-		}
 		
 		public Node(Node left, Node right, int freq, char ch) {
 			this.left = left;
@@ -51,7 +44,7 @@ public class Huffman {
 	/**
 	 * 恢复原字符流的函数
 	 */
-	public void expand() {
+	public static void expand() {
 		//读取输入流中字典树
 		Node root = readTrie();
 		//读取字符总数
@@ -69,51 +62,76 @@ public class Huffman {
 		BinaryStdOut.close();
 	}
 	
+	public static void compress() {
+		/*
+		 * 1. 读取标准输入
+		 * 2. 统计每个字符的出现频率
+		 * 3. 根据字符频率创建huffman编码字典树
+		 * 4. 创建与字典树对应的编码表
+		 * 5. 向标准输出打印编码为二进制流的字典树
+		 * 6. 向标准输出打印编码为二进制流的字符总数统计
+		 * 7. 使用编码表打印编码后的输入字符串
+		 */
+		//统计字符频率
+		int[] freq = new int[R];
+		char[] chs = BinaryStdIn.readString().toCharArray();
+		for(int i = 0; i < chs.length; i++) 
+			freq[chs[i]]++;
+		BinaryStdIn.close();
+		//根据字符频率创建huffman编码字典树
+		Node root = buildTrie(freq);
+		//根据字典树创建与之对应的编码表
+		String[] st = buildCode(root);
+		//向标准输出打印编码为二进制流的字典树
+		writeTrie(root);
+		//向标准输出流打印字符总数
+		BinaryStdOut.write(chs.length);
+		//使用编码表打印编码后的字符串的二进制流
+		compress(chs, st);
+	}
+	
 	/**
 	 * 压缩算法
 	 */
-	public void compress() {
+	public static void compress(char[] chs, String[] st) {
 		if(st == null) throw new RuntimeException("编码表未初始化");
-		while(!BinaryStdIn.isEmpty()){
-			//从标准输入读取一个字符
-			char ch = BinaryStdIn.readChar();
-			String code = st[ch];
-			if(code != null && !code.equals("")){
-				for(int i = 0; i < code.length(); i++) {
-					BinaryStdOut.write(
-							code.charAt(i)=='1'?true:false);
-				}
+		for(int i = 0; i < chs.length; i++) {
+			String code = st[i];
+			for(int j = 0; j < code.length(); j++) {
+				if(code.charAt(j) == '1')
+					BinaryStdOut.write(true);
+				else 
+					BinaryStdOut.write(false);
 			}
+			
 		}
 		BinaryStdOut.close();
 	}
-	
 	/**
 	 * 构建压缩编码需要使用到的编码表
+	 * @param root
+	 * @return
 	 */
-	private void buildCode() {
-		/*
-		 * 1. 遍历整个字典树
-		 * 2. 保存经过的路径
-		 */
-		st = new String[R];
-		reverse(root, "");
+	private static String[] buildCode(Node root) {
+		if(root == null) return null;
+		String[] st = new String[R];
+		buildCode(st, root, "");
+		return st;
 	}
-	
-	private void reverse(Node x, String code) {
+	private static void buildCode(String[] st, Node x, String str){
+		if(x == null) return;
 		if(x.isLeaf()) {
-			st[x.ch] = code;
-			return;
+			st[x.ch] = str;return;
 		}
-		reverse(x.left, code+"0");
-		reverse(x.right, code+"1");
+		buildCode(st, x.left, str+"0");
+		buildCode(st, x.right, str+"1");
 	}
 	
 	/**
 	 * 读取输入流中的字典树
 	 * @return
 	 */
-	private Node readTrie() {
+	private static Node readTrie() {
 		Node root = new Node(null, null, 0, '\0');
 		boolean isLeft = true;
 		while(!BinaryStdIn.isEmpty()){
@@ -131,33 +149,19 @@ public class Huffman {
 		}
 		return root;
 	}
-
+	
 	/**
-	 * 构造字典树
+	 * 根据字符频率数组构造字典树
+	 * @param freq
 	 * @return
 	 */
-	private Node buildTrie() {
-		//用于保存字典树节点的容器
-		Node[] nodes = new Node[R];
-		//从标准输入中读取所有字符
-		String s = BinaryStdIn.readString();
-		//nodes中非空节点的个数
-		int num = 0;
-		//遍历该字符串获得所有的字符计算频度
-		for(int i = 0; i < s.length(); i++) {
-			char c = s.charAt(i);
-			if(nodes[c] == null) {
-				nodes[c] = new Node(null,null,1,c);
-				num++;
-			}
-			else nodes[c].freq++;
-		}
+	private static Node buildTrie(int[] freq) {
 		//创建用于查找最小值的优先队列
-		MinPQ<Node> pq = new MinPQ<Node>(num);
+		MinPQ<Node> pq = new MinPQ<Node>(freq.length);
 		//遍历节点树容器构建字典树
-		for(int i = 0; i < nodes.length; i++) {
-			if(nodes[i] != null) {
-				pq.insert(nodes[i]);
+		for(int i = 0; i < freq.length; i++) {
+			if(freq[i] != 0) {
+				pq.insert(new Node(null, null, freq[i], '\0'));
 			}
 		}
 		while(pq.size() > 1){
@@ -169,10 +173,11 @@ public class Huffman {
 		}
 		return pq.deMin();
 	}
+
 	/**
 	 * 向标准输出流打印编码字典树
 	 */
-	private void writeTrie(Node x) {
+	private static void writeTrie(Node x) {
 		/*
 		 * 先序遍历该字典树
 		 */
@@ -190,22 +195,4 @@ public class Huffman {
 		writeTrie(x.right);
 	}
 	
-	public static void main(String[] args) {
-		Huffman hfm = new Huffman();
-		hfm.compress();
-	}
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
