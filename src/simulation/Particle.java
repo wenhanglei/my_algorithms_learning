@@ -12,7 +12,7 @@ public class Particle {
 	public Particle() {
 	}
 	/**
-	 * 依据特定位置，速度，方向，质量创建粒子对象
+	 * 依据特定位置，速度，粒子半径，质量创建粒子对象
 	 */
 	public Particle(double rx, double ry, 
 			double vx, double vy, double s, double mass){
