@@ -16,7 +16,7 @@ public class Event implements Comparable<Event> {
 		if(a != null) countA = a.count(); else countA = -1;
 		if(b != null) countB = b.count(); else countB = -1;
 	}
-	
+	//该世间是否是有效碰撞事件
 	public boolean isValid() {
 		if(a != null && a.count() != countA) return false;
 		if(b != null && b.count() != countB) return false;
