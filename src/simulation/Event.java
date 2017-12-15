@@ -8,7 +8,10 @@ public class Event implements Comparable<Event> {
 	//事件源的已碰撞次数
 	private final int countA, countB;
 	
-	//事件对象的初始化
+	/**事件对象的初始化
+	 * 如果a粒子为null则表示与水平墙碰撞
+	 * 如果b粒子为null则表示与垂直墙碰撞
+	 */
 	public Event(double t, Particle a, Particle b) {
 		this.time = t;
 		this.a = a;
