@@ -6,6 +6,16 @@ package simulation;
  *
  */
 public class Particle {
+	//粒子的当前位置
+	double rx, ry;
+	//粒子水平方向和垂直方向的速度分量
+	double vx, vy;
+	//粒子的半径
+	double s;
+	//粒子的质量
+	double mass;
+	//碰撞次数
+	int count;
 	/**
 	 * 在单位方框内随机创建一个粒子类
 	 */
@@ -16,6 +26,12 @@ public class Particle {
 	 */
 	public Particle(double rx, double ry, 
 			double vx, double vy, double s, double mass){
+		this.rx = rx;
+		this.ry = ry;
+		this.vx = vx;
+		this.vy = vy;
+		this.s = s;
+		this.mass = mass;
 	}
 	/**
 	 * 绘制该粒子对象
@@ -26,13 +42,14 @@ public class Particle {
 	 * 移动粒子状态到dt时间后的状态
 	 */
 	public void move(double dt) {
-		
+		rx = vx*dt + rx;
+		ry = vx*dt+ry;
 	}
 	/**
 	 * 该粒子可能涉及的碰撞次数
 	 */
 	public int count() {
-		return 0;
+		return count;
 	}
 	/**
 	 * 该粒子碰撞b粒子的时间

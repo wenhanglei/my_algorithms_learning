@@ -48,7 +48,37 @@ public class CollisionSystem {
 	 *  5. 使用predictCollition预测碰撞粒子参与的可能发生的碰撞事件插入到优先队列中
 	 */
 	public void simulate() {
-		
+		//从优先队列中取出即将发生碰撞的事件
+		Event e = null;
+		//最小时间片段
+		double dt = 5;
+		//当前时间 
+		double t = new Date().getTime();
+		while(true){
+			e = pq.deMin();
+			//如果碰撞事件不合法则继续
+			if(!e.isValid()) continue;
+			//以简单的直线运动更新粒子的位置
+			while(t+dt < e.time) {
+				for(int i = 0; i < num; i++) {
+					ptcs[i].move(dt);
+				}
+				t += dt;
+			}
+			//更新碰撞后的粒子速度并且预测粒子可能参加的碰撞事件
+			if(e.a != null && e.b != null) {
+				e.a.bounceOff(e.b);
+				e.b.bounceOff(e.a);
+				predictCollitions(e.a, t+20);
+				predictCollitions(e.b, t+20);
+			}else if(e.a == null) {
+				e.b.bounceOffHorizontalWall();
+				predictCollitions(e.b, t+20);
+			}else {
+				e.a.bounceOffVerticalWall();
+				predictCollitions(e.a, t+20);
+			}
+		}
 	}
 	
 	/**
