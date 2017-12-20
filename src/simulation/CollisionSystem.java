@@ -1,16 +1,16 @@
 package simulation;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.Date;
 
 import algorithms.MinPQ;
 
 public class CollisionSystem {
+
+	private final static double HZ = 0.5;      //绘制的频率
 	
-	private MinPQ<Event> pq;                    //存放事件的优先队列
-	private final int num;                      //碰撞系统的粒子总数
-	private Particle[] ptcs;                    //碰撞仿真粒子的容器
-	private double t;                           //当前时间
+	private MinPQ<Event> pq;                   //存放事件的优先队列
+	private Particle[] pts;                    //碰撞仿真粒子的容器
+	private double t = 0.0;                    //模拟时钟
 	
 	/**
 	 * 构造函数：
@@ -19,22 +19,12 @@ public class CollisionSystem {
 	 * 	3. 使用predictCollition初始化事件队列
 	 */
 	public CollisionSystem() {
-		//设置碰撞粒子总数为20个
-		num = 20;
-		//初始化所有的粒子
-		ptcs = new Particle[num];
-		for(int i = 0; i < num; i++)
-			ptcs[i] = new Particle();
-		//创建事件队列
-		pq = new MinPQ<Event>();
-		//使用predictCollitions初始化事件队列
-		//初始化当前时间
-		for(int i = 0; i < num; i++) {
-			//0.2秒以外的事件不考虑
-			predictCollitions(ptcs[i], t+200);
-		}
 	}
 	
+	public CollisionSystem(Particle[] pts) {
+		this.pts = pts;
+	}
+
 	/**
 	 * 仿真函数：
 	 * 	1. 从优先队列取出即将发生碰撞事件
@@ -43,19 +33,53 @@ public class CollisionSystem {
 	 *  4. 更新碰撞后的粒子速度
 	 *  5. 使用predictCollition预测碰撞粒子参与的可能发生的碰撞事件插入到优先队列中
 	 */
-	public void simulate() {
+	public void simulate(double limit) {
+		//初始化事件队列
+		for(int i = 0; i < pts.length; i++) {
+			predictCollitions(pts[i], limit);
+		}
+		//插入重绘事件
+		pq.insert(new Event(t+1.0/HZ, null, null));
+		while(!pq.isEmpty()){
+			//从当前优先队列取出即将发生的碰撞事件
+			Event e = pq.deMin();
+			//判断碰撞事件是否合法
+			if(!e.isValid())                  //如果碰撞事件不合法
+				continue;
+			//如果碰撞事件合法
+			
+			
+		}
+			
+	}
 	
+	/**
+	 * 重新绘制该碰撞系统
+	 */
+	private void redraw() {
+		//清空当前绘制的图案
+		StdDraw.clear();
+		//绘制新的图案
+		for(int i = 0; i < pts.length; i++) {
+			pts[i].draw();
+		}
+		//显示该图案
+		StdDraw.show();
+		//暂停20毫秒
+		StdDraw.pause(20);
+		//插入下一次的绘制事件
+		pq.insert(new Event(t+1.0/HZ, null, null));
 	}
 	
 	/**
 	 * 预测粒子a可能出现的碰撞情况并把碰撞事件存放到事件队列中
 	 * limit 我们关心的事件必须发生的时刻，如果事件时间大于该时刻则不关心
 	 */
-	public final void predictCollitions(Particle a, double limit) {
+	private final void predictCollitions(Particle a, double limit) {
 		if(a == null) return;
 		//粒子a与其他粒子的碰撞
-		for(int i = 0; i < num; i++) {
-			Particle b = ptcs[i];
+		for(int i = 0; i < pts.length; i++) {
+			Particle b = pts[i];
 			if(b != a) {
 				double dt = a.timeTOHit(b);
 				if(t+dt < limit)
@@ -80,13 +104,19 @@ public class CollisionSystem {
 	public static void main(String[] args) {
 		//绘制主窗口
 		StdDraw.setCanvasSize(800, 800);
-		//开启双缓存
-		StdDraw.enableDoubleBuffering();
+//		//开启双缓存
+//		StdDraw.enableDoubleBuffering();
 		
-		//获取碰撞系统对象
-		CollisionSystem collisionSystem = new CollisionSystem();
+		//创建一组随机粒子
+		Particle[] pts = new Particle[20];
+		for(int i = 0; i < pts.length; i++) {
+			pts[i] = new Particle();
+		}
+		
+		//获取这组粒子构成的碰撞系统对象
+		CollisionSystem collisionSystem = new CollisionSystem(pts);
 		//调用仿真函数
-		
+		collisionSystem.simulate(10000);
 	}
 	
 }
