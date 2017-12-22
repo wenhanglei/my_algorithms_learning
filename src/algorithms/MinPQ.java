@@ -1,6 +1,6 @@
 package algorithms;
 
-public class MinPQ<Key extends Comparable> {
+public class MinPQ<Key> {
 	
 	private Key[] pq;
 	private int N = 0;
@@ -57,7 +57,7 @@ public class MinPQ<Key extends Comparable> {
 	 * @return
 	 */
 	private boolean less(int a, int b) {
-		return pq[a].compareTo(pq[b]) < 0;
+		return ((Comparable<Key>)pq[a]).compareTo(pq[b]) < 0;
 	}
 	/**
 	 * 交换a，b处的key

@@ -2,7 +2,7 @@ package simulation;
 
 import java.util.Date;
 
-import algorithms.MinPQ;
+import org.w3c.dom.events.EventException;
 
 public class CollisionSystem {
 
@@ -33,24 +33,58 @@ public class CollisionSystem {
 	 *  4. 更新碰撞后的粒子速度
 	 *  5. 使用predictCollition预测碰撞粒子参与的可能发生的碰撞事件插入到优先队列中
 	 */
+//	public void simulate(double limit) {
+//		//初始化事件队列
+//		for(int i = 0; i < pts.length; i++) {
+//			predictCollitions(pts[i], limit);
+//		}
+//		//插入重绘事件
+//		pq.insert(new Event(t+1.0/HZ, null, null));
+//		while(!pq.isEmpty()){
+//			//从当前优先队列取出即将发生的碰撞事件
+//			Event e = pq.deMin();
+//			//判断碰撞事件是否合法
+//			if(!e.isValid())                  //如果碰撞事件不合法
+//				continue;
+//			//如果碰撞事件合法
+//			
+//			
+//		}
+//			
+//	}
 	public void simulate(double limit) {
 		//初始化事件队列
+		pq = new MinPQ<Event>();
 		for(int i = 0; i < pts.length; i++) {
 			predictCollitions(pts[i], limit);
 		}
 		//插入重绘事件
 		pq.insert(new Event(t+1.0/HZ, null, null));
+		//仿真循环
+		Event e;
 		while(!pq.isEmpty()){
-			//从当前优先队列取出即将发生的碰撞事件
-			Event e = pq.deMin();
-			//判断碰撞事件是否合法
-			if(!e.isValid())                  //如果碰撞事件不合法
-				continue;
-			//如果碰撞事件合法
-			
-			
+			e = pq.delMin();
+			//判断事件内容
+			if(!e.isValid()) continue;
+			while(t < e.time){
+				for(int i = 0; i < pts.length; i++)
+					pts[i].move(1);
+				redraw();
+				t++;
+			}
+			if(e.a == null && e.b != null){             //与垂直墙碰撞
+				e.b.bounceOffVerticalWall();
+			}else if(e.a != null && e.b == null){       //与水平墙碰撞
+				e.a.bounceOffHorizontalWall();
+			}else if(e.a != null && e.b != null){                                      //粒子碰撞
+				e.a.bounceOff(e.b);
+			}
+			//绘制碰撞后的图像
+			redraw();
+			//预测碰撞粒子的下次碰撞
+			predictCollitions(e.a, limit);
+			predictCollitions(e.b, limit);
 		}
-			
 	}
 	
 	/**
@@ -104,11 +138,11 @@ public class CollisionSystem {
 	public static void main(String[] args) {
 		//绘制主窗口
 		StdDraw.setCanvasSize(800, 800);
-//		//开启双缓存
-//		StdDraw.enableDoubleBuffering();
+		//开启双缓存
+		StdDraw.enableDoubleBuffering();
 		
 		//创建一组随机粒子
-		Particle[] pts = new Particle[20];
+		Particle[] pts = new Particle[2];
 		for(int i = 0; i < pts.length; i++) {
 			pts[i] = new Particle();
 		}

@@ -2,9 +2,9 @@ package simulation;
 
 public class Event implements Comparable<Event> {
 	//碰撞事件的发生时间
-	private final double time;
+	final double time;
 	//碰撞事件的事件源
-	private final Particle a, b;
+	final Particle a, b;
 	//事件源的已碰撞次数
 	private final int countA, countB;
 	
