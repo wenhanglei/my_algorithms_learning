@@ -2,6 +2,8 @@ package simulation;
 
 import java.util.Date;
 
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.w3c.dom.events.EventException;
 
 public class CollisionSystem {
@@ -58,32 +60,34 @@ public class CollisionSystem {
 		for(int i = 0; i < pts.length; i++) {
 			predictCollitions(pts[i], limit);
 		}
-		//插入重绘事件
-		pq.insert(new Event(t+1.0/HZ, null, null));
-		//仿真循环
-		Event e;
+		//第一次绘制事件
+		pq.insert(new Event(0, null, null));
 		while(!pq.isEmpty()){
-			e = pq.delMin();
-			//判断事件内容
+			//获取即将发生的事件
+			Event e = pq.delMin();
+			//如果该事件不合法则继续读取下一个将事件
 			if(!e.isValid()) continue;
-			while(t < e.time){
-				for(int i = 0; i < pts.length; i++)
-					pts[i].move(1);
-				redraw();
-				t++;
-			}
-			if(e.a == null && e.b != null){             //与垂直墙碰撞
-				e.b.bounceOffVerticalWall();
-			}else if(e.a != null && e.b == null){       //与水平墙碰撞
-				e.a.bounceOffHorizontalWall();
-			}else if(e.a != null && e.b != null){                                      //粒子碰撞
-				e.a.bounceOff(e.b);
-			}
-			//绘制碰撞后的图像
-			redraw();
-			//预测碰撞粒子的下次碰撞
-			predictCollitions(e.a, limit);
-			predictCollitions(e.b, limit);
+			
+			//绘制图像到事件发生之前的时刻
+			for(int i = 0; i < pts.length; i++) 
+				pts[i].move(e.time - t);
+			//修改时间参数
+			t = e.time;
+			
+			//获取碰撞的粒子
+			Particle a = e.a;
+			Particle b = e.b;
+			
+			//修改粒子碰撞后的运动状态
+			
+			if(e.a == null && e.b != null) e.b.bounceOffHorizontalWall();
+			else if(e.a != null && e.b == null) e.a.bounceOffVerticalWall();
+			else if(e.a != null && e.b != null) e.a.bounceOff(e.b);
+			else redraw();
+			
+			//预测碰撞后粒子新的碰撞事件
+			predictCollitions(a, limit);
+			predictCollitions(b, limit);
 		}
 	}
 	
@@ -115,7 +119,7 @@ public class CollisionSystem {
 		for(int i = 0; i < pts.length; i++) {
 			Particle b = pts[i];
 			if(b != a) {
-				double dt = a.timeTOHit(b);
+				double dt = a.timeToHit(b);
 				if(t+dt < limit)
 					pq.insert(new Event(t+dt, a, b));
 			}
@@ -137,12 +141,12 @@ public class CollisionSystem {
 	 */
 	public static void main(String[] args) {
 		//绘制主窗口
-		StdDraw.setCanvasSize(800, 800);
+		StdDraw.setCanvasSize(300, 300);
 		//开启双缓存
 		StdDraw.enableDoubleBuffering();
 		
 		//创建一组随机粒子
-		Particle[] pts = new Particle[2];
+		Particle[] pts = new Particle[100];
 		for(int i = 0; i < pts.length; i++) {
 			pts[i] = new Particle();
 		}
