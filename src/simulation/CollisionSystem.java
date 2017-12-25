@@ -1,5 +1,6 @@
 package simulation;
 
+import java.awt.Color;
 import java.util.Date;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -24,7 +25,7 @@ public class CollisionSystem {
 	}
 	
 	public CollisionSystem(Particle[] pts) {
-		this.pts = pts;
+		this.pts = pts.clone();
 	}
 
 	/**
@@ -83,7 +84,7 @@ public class CollisionSystem {
 			if(e.a == null && e.b != null) e.b.bounceOffHorizontalWall();
 			else if(e.a != null && e.b == null) e.a.bounceOffVerticalWall();
 			else if(e.a != null && e.b != null) e.a.bounceOff(e.b);
-			else redraw();
+			else redraw(limit);
 			
 			//预测碰撞后粒子新的碰撞事件
 			predictCollitions(a, limit);
@@ -94,7 +95,7 @@ public class CollisionSystem {
 	/**
 	 * 重新绘制该碰撞系统
 	 */
-	private void redraw() {
+	private void redraw(double limit) {
 		//清空当前绘制的图案
 		StdDraw.clear();
 		//绘制新的图案
@@ -104,9 +105,10 @@ public class CollisionSystem {
 		//显示该图案
 		StdDraw.show();
 		//暂停20毫秒
-		StdDraw.pause(20);
+		StdDraw.pause(2);
 		//插入下一次的绘制事件
-		pq.insert(new Event(t+1.0/HZ, null, null));
+		if(t < limit)
+			pq.insert(new Event(t+1.0/HZ, null, null));
 	}
 	
 	/**
@@ -141,15 +143,18 @@ public class CollisionSystem {
 	 */
 	public static void main(String[] args) {
 		//绘制主窗口
-		StdDraw.setCanvasSize(300, 300);
+		StdDraw.setCanvasSize(500, 500);
 		//开启双缓存
 		StdDraw.enableDoubleBuffering();
 		
 		//创建一组随机粒子
-		Particle[] pts = new Particle[100];
-		for(int i = 0; i < pts.length; i++) {
-			pts[i] = new Particle();
-		}
+//		Particle[] pts = new Particle[100];
+//		for(int i = 0; i < pts.length; i++) {
+//			pts[i] = new Particle();
+//		}
+		//创建指定粒子
+		Particle[] pts = new Particle[1];
+		pts[0] = new Particle(0, 0.5, 0.0005, 0, 0.02, 0.5, Color.BLACK);
 		
 		//获取这组粒子构成的碰撞系统对象
 		CollisionSystem collisionSystem = new CollisionSystem(pts);
