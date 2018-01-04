@@ -5,7 +5,6 @@ package algorithms;
 public class SuffixArray {
 	
 	private String[] array;                //后缀数组
-	private int[] lcp;                     //后缀字符串对应的最长匹配前缀的长度数组
 	private int N;                         //text的长度
 	
 	/**
@@ -16,12 +15,10 @@ public class SuffixArray {
 		this.N = text.length();
 		//初始化后缀数组
 		array = new String[N];
-		//初始化后缀字符串的最长匹配前缀的长度数组
-		lcp = new int[N];
-		
 		for(int i = 0; i < N; i++) {
 			array[i] = text.substring(i);
 		}
+		Quick3way.sort(array);
 	}
 	
 	/**
@@ -52,18 +49,28 @@ public class SuffixArray {
 		if(i == 0) return 0;
 		String curr = select(i);
 		String pre = select(i-1);
-		return 0;
+		return lcp(select(i), select(i-1));
 	}
 	
-	private int lcp(String a, String b) {
-		int pre = 0;
-		return 0;
+	private int lcp(String s, String t) {
+		int N = Math.min(s.length(), t.length());
+		for(int i = 0; i < N; i++)
+			if(s.charAt(i) != t.charAt(i)) return i;
+		return N;
 	}
 	
 	/**
 	 * 返回与字符串key相匹配的后缀字符串在该后缀数组中的下标位置
 	 */
 	public int rank(String key) {
-		return 0;
+		int lo = 0, hi = N-1;
+		while(lo < hi){
+			int mid = lo + (hi-lo)/2;
+			int com = key.compareTo(array[mid]);
+			if(com > 0) lo = mid+1;
+			else if(com < 0) hi = mid-1;
+			else return mid;
+		}
+		return lo;
 	}
 }
