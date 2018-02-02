@@ -16,7 +16,7 @@ public class DirectedDFS {
 	private void dfs(Digraph G, int s) {
 		marked[s] = true;
 		for(int v : G.adj(s))
-			if(!marked[v]) dfs(G, s);
+			if(!marked[v]) dfs(G, v);
 	}
 	/**
 	 * 深度优先遍历查找与顶点集合的可达性
