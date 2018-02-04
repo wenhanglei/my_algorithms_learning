@@ -1,5 +1,8 @@
 package max_flow;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.List;
 
 /**
@@ -22,6 +25,13 @@ public class FlowNetwork {
 	public FlowNetwork(int V) {
 		adj = (List<FlowEdge>[]) new Object[V];
 		this.V = V;
+	}
+	
+	public FlowNetwork(BufferedReader reader) throws IOException{
+		String line = null;
+		while((line = reader.readLine()) != null){
+			System.out.println(line);
+		}
 	}
 	
 	/**
