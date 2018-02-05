@@ -1,19 +1,26 @@
 package max_flow;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Enumeration;
-import java.util.Properties;
 
 public class MaxFlowClient {
 	
+	/**
+	 * 判断顶点v的流是否均衡
+	 */
 	private boolean localEq(FlowNetwork G, int v){
-		return false;
+		double in = 0, out = 0;
+		for(FlowEdge e : G.edges()){
+			if(e.from() == v){
+				out += e.flow();
+			}
+			if(e.to() == v){
+				in += e.flow();
+			}
+		}
+		return in == out;
 	}
 	
 	private boolean isFeasible(FlowNetwork G){

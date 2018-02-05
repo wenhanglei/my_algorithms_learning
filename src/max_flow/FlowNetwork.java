@@ -3,6 +3,8 @@ package max_flow;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -28,9 +30,20 @@ public class FlowNetwork {
 	}
 	
 	public FlowNetwork(BufferedReader reader) throws IOException{
+		//获取顶点的数量
+		this.V = Integer.parseInt(reader.readLine());
+		//获取边的数量
+		this.E = Integer.parseInt(reader.readLine());
+		//初始化装载有向边的邻接表
+		this.adj = (List<FlowEdge>[]) new List[this.V];
 		String line = null;
 		while((line = reader.readLine()) != null){
-			System.out.println(line);
+			String[] strs = line.split(" ");
+			//调用FlowEdge的构造函数
+			FlowEdge e = new FlowEdge(Integer.parseInt(strs[0]),
+					Integer.parseInt(strs[1]),
+					Double.parseDouble(strs[2]));
+			addEdge(e);
 		}
 	}
 	
@@ -53,7 +66,11 @@ public class FlowNetwork {
 	 * @param e
 	 */
 	public void addEdge(FlowEdge e) {
-		
+		//判断链表是否存在，如果不存在则先创建链表
+		if(adj[e.from()] == null) 
+			adj[e.from()] = new LinkedList<FlowEdge>();
+		//向网络流中添加有向边
+		adj[e.from()].add(e);
 	}
 	
 	/**
@@ -61,13 +78,21 @@ public class FlowNetwork {
 	 * @return 顶点v指向的所有边的迭代器
 	 */
 	public Iterable<FlowEdge> adj(int v) {
-		return null;
+		if(adj[v] != null)
+			return adj[v];
+		else return null;
 	}
 	
 	/**
 	 * @return 当前网络流中所有边
 	 */
 	public Iterable<FlowEdge> edges() {
-		return null;
+		List<FlowEdge> list = new LinkedList<FlowEdge>();
+		for(int i = 0; i < V; i++){
+			if(adj[i] != null){
+				list.addAll(adj[i]);
+			}
+		}
+		return list;
 	}
 }
