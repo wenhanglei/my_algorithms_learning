@@ -11,20 +11,27 @@ public class MaxFlowClient {
 	 * 判断顶点v的流是否均衡
 	 */
 	private boolean localEq(FlowNetwork G, int v){
-		double in = 0, out = 0;
-		for(FlowEdge e : G.edges()){
-			if(e.from() == v){
-				out += e.flow();
-			}
-			if(e.to() == v){
-				in += e.flow();
-			}
+		double EPSILON = 1e-11;
+		double sum = 0;
+		for(FlowEdge e : G.adj(v)){
+			if(e.from() == v) sum -= e.flow();
+			else sum += e.flow();
 		}
-		return in == out;
+		return Math.abs(sum) < EPSILON;
 	}
 	
 	private boolean isFeasible(FlowNetwork G){
-		return false;
+		//检查每条边非负并且小于capacity
+		for(FlowEdge e : G.edges()){
+			if(e.flow() < 0) return false;
+			if(e.flow() > e.capacity()) return false;
+		}
+		
+		//检查每个顶点是否局部均衡
+		for(int i = 1; i < G.V()-1; i++){
+			if(!localEq(G, i)) return false;
+		}
+		return true;
 	}
 	
 	public static void main(String[] args) throws IOException {

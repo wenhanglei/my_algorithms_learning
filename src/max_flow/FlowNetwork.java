@@ -2,10 +2,10 @@ package max_flow;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.Reader;
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 流网络
@@ -69,8 +69,11 @@ public class FlowNetwork {
 		//判断链表是否存在，如果不存在则先创建链表
 		if(adj[e.from()] == null) 
 			adj[e.from()] = new LinkedList<FlowEdge>();
-		//向网络流中添加有向边
+		if(adj[e.to()] == null)
+			adj[e.to()] = new LinkedList<FlowEdge>();
+		//向网络流中添加边
 		adj[e.from()].add(e);
+		adj[e.to()].add(e);
 	}
 	
 	/**
@@ -87,12 +90,12 @@ public class FlowNetwork {
 	 * @return 当前网络流中所有边
 	 */
 	public Iterable<FlowEdge> edges() {
-		List<FlowEdge> list = new LinkedList<FlowEdge>();
+		Set<FlowEdge> set = new HashSet<FlowEdge>();
 		for(int i = 0; i < V; i++){
 			if(adj[i] != null){
-				list.addAll(adj[i]);
+				set.addAll(adj[i]);
 			}
 		}
-		return list;
+		return set;
 	}
 }
