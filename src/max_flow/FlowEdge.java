@@ -70,10 +70,29 @@ public class FlowEdge {
 	}
 	
 	/**
+	 * 向顶点v的流向添加残留网络流量
+	 * @param v
+	 * @param delta
+	 */
+	public void addResidualFlowTo(int v, double delta){
+		if(v == to)
+			flow -= delta;
+		else if(v == from)
+			flow += delta;
+		else throw new RuntimeException("添加流量异常");
+	}
+	
+	/**
 	 * 向顶点v的流向添加cap的流量
 	 */
 	public void addFlowTo(int v, double cap) {
 		if(v == to) flow += cap;
 		if(v == from) flow -= cap;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("%d->%d %.2f %.2f", from, to, capacity, flow);
+	}
+	
 }
