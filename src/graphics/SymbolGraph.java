@@ -1,4 +1,15 @@
 package graphics;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map.Entry;
+import java.util.Set;
+
 /**
  * 字符串表示顶点的无向图
  * @author wenhanglei
@@ -6,11 +17,49 @@ package graphics;
 public class SymbolGraph {
 	
 	private Graph G;
+	private HashMap<String, Integer> index;
+	private String[] names;
+	//顶点的数量
+	private int N;
 	
 	/**
 	 * 构造函数
 	 */
 	public SymbolGraph(String filename, String delim) {
+		try {
+			BufferedReader reader = new BufferedReader(
+					new InputStreamReader(
+							new FileInputStream(filename)));
+			index = new HashMap<String, Integer>();
+			String line = null;
+			while((line=reader.readLine()) != null){
+				String[] strs = line.split(delim);
+				for(int i = 0; i < strs.length; i++){
+					if(!index.containsKey(strs[i])){
+						index.put(strs[i], N++);
+					}
+				}
+			}
+			names = new String[N];
+			G = new Graph(N);
+			for(Entry<String, Integer> en : index.entrySet()){
+				names[en.getValue()] = en.getKey();
+			}
+			reader = new BufferedReader(
+					new InputStreamReader(
+							new FileInputStream(filename)));
+			while((line=reader.readLine()) != null){
+				String[] strs = line.split(delim);
+				for(int i = 1; i < strs.length; i++){
+					G.addEdge(index.get(strs[0]), index.get(strs[i]));
+				}
+			}
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -19,7 +68,7 @@ public class SymbolGraph {
 	 * @return
 	 */
 	public boolean contains(String key){
-		return false;
+		return index.containsKey(key);
 	}
 	
 	/**
@@ -27,7 +76,9 @@ public class SymbolGraph {
 	 * @param key
 	 */
 	public int index(String key){
-		return 0;
+		if(contains(key))
+			return index.get(key);
+		else return -1;
 	}
 	
 	/**
@@ -36,7 +87,9 @@ public class SymbolGraph {
 	 * @return
 	 */
 	public String name(int v){
-		return null;
+		if(v >= 0 && v < names.length)
+			return names[v];
+		else return null;
 	}
 	
 	/**
