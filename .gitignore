@@ -97,3 +97,7 @@ local.properties
 .worksheet
 .classpath
 .project
+/movies.txt
+/routes.txt
+/tinyCG.txt
+/tinyG.txt
