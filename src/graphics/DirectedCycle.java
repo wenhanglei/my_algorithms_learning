@@ -17,6 +17,9 @@ public class DirectedCycle {
 		marked = new boolean[G.V()];
 		edgeTo = new int[G.V()];
 		onStack = new boolean[G.V()];
+		for(int i = 0; i < G.V(); i++){
+			if(!marked[i]) DirectedDFS(G, i);
+		}
 	}
 	
 	/**
