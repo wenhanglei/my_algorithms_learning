@@ -15,7 +15,7 @@ public class DepthFirstOrder {
 	private Queue<Integer> post;
 	private Stack<Integer> reversePost;
 	
-	public DepthFirstOrder(Digraph G, int s) {
+	public DepthFirstOrder(Digraph G) {
 		marked = new boolean[G.V()];
 		pre = new LinkedList<>();
 		post = new LinkedList<>();
